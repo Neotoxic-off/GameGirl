@@ -1,7 +1,9 @@
+#include <fstream>
 #include <iostream>
 
 #include "Instruction.hpp"
 #include "Register.hpp"
+#include "Logger.hpp"
 
 class GameGirl
 {
@@ -9,7 +11,12 @@ class GameGirl
         GameGirl();
         ~GameGirl();
 
+        bool LoadRom(std::string);
     private:
+        char *romData;
+
+        Logger logger;
+
         Instruction instructions[256] = {
             Instruction("NOP",         nullptr, 1),
             Instruction("LD BC,d16",   nullptr, 3),
