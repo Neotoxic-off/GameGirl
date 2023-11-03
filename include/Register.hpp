@@ -1,8 +1,8 @@
-class Registers
+class Register
 {
     public:
-        Memory();
-        ~Memory();
+        Register();
+        ~Register();
 
         unsigned char get_a();
         unsigned char set_a(unsigned char);
