@@ -9,5 +9,7 @@ Instruction::Instruction(char *disassembly, void *execute, unsigned char length)
 
 Instruction::~Instruction()
 {
-
+    if (disassembly != nullptr) {
+        delete[] disassembly;
+    }
 }

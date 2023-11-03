@@ -4,54 +4,54 @@ class Register
         Register();
         ~Register();
 
-        unsigned char get_a();
-        unsigned char set_a(unsigned char);
+        unsigned char getRegisterA();
+        unsigned char setRegisterA(unsigned char);
 
-        unsigned char get_b();
-        unsigned char set_b(unsigned char);
+        unsigned char getRegisterB();
+        unsigned char setRegisterB(unsigned char);
 
-        unsigned char get_c();
-        unsigned char set_c(unsigned char);
+        unsigned char getRegisterC();
+        unsigned char setRegisterC(unsigned char);
 
-        unsigned char get_d();
-        unsigned char set_d(unsigned char);
+        unsigned char getRegisterD();
+        unsigned char setRegisterD(unsigned char);
 
-        unsigned char get_e();
-        unsigned char set_e(unsigned char);
+        unsigned char getRegisterE();
+        unsigned char setRegisterE(unsigned char);
 
-        unsigned char get_f();
-        unsigned char set_f(unsigned char);
+        unsigned char getRegisterF();
+        unsigned char setRegisterF(unsigned char);
 
-        unsigned char get_h();
-        unsigned char set_h(unsigned char);
+        unsigned char getRegisterH();
+        unsigned char setRegisterH(unsigned char);
 
-        unsigned char get_l();
-        unsigned char set_l(unsigned char);
+        unsigned char getRegisterL();
+        unsigned char setRegisterL(unsigned char);
 
-        unsigned char get_p();
-        unsigned char set_p(unsigned char);
+        unsigned char getRegisterP();
+        unsigned char setRegisterP(unsigned char);
 
-        unsigned char get_s();
-        unsigned char set_s(unsigned char);
+        unsigned char getRegisterS();
+        unsigned char setRegisterS(unsigned char);
 
         // UNION
-        unsigned short get_af();
-        unsigned short set_af(unsigned char, unsigned char);
+        unsigned short getRegisterAF();
+        unsigned short setRegisterAF(unsigned char, unsigned char);
 
-        unsigned short get_bc();
-        unsigned short set_bc(unsigned char, unsigned char);
+        unsigned short getRegisterBC();
+        unsigned short setRegisterBC(unsigned char, unsigned char);
 
-        unsigned short get_de();
-        unsigned short set_de(unsigned char, unsigned char);
+        unsigned short getRegisterDE();
+        unsigned short setRegisterDE(unsigned char, unsigned char);
 
-        unsigned short get_hl();
-        unsigned short set_hl(unsigned char, unsigned char);
+        unsigned short getRegisterHL();
+        unsigned short setRegisterHL(unsigned char, unsigned char);
 
-        unsigned short get_sp();
-        unsigned short set_sp(unsigned char, unsigned char);
+        unsigned short getRegisterSP();
+        unsigned short setRegisterSP(unsigned char, unsigned char);
 
-        unsigned short get_pc();
-        unsigned short set_pc(unsigned char, unsigned char);
+        unsigned short getRegisterPC();
+        unsigned short setRegisterPC(unsigned char, unsigned char);
 
     private:
         unsigned char a;

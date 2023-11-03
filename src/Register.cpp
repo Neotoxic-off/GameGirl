@@ -10,201 +10,216 @@ Register::~Register()
 
 }
 
-unsigned char Register::get_a()
+bool validateValue(unsigned char value)
+{
+    return (value <= 255);
+}
+
+unsigned char Register::getRegisterA()
 {
     return (this->a);
 }
 
-unsigned char Register::set_a(unsigned char a)
+unsigned char Register::setRegisterA(unsigned char a)
 {
-    this->a = a;
+    if (validateValue(a) == true)
+        this->a = a;
 
-    return (get_a());
+    return (Register::getRegisterA());
 }
 
-unsigned char Register::get_b()
+unsigned char Register::getRegisterB()
 {
     return (this->b);
 }
 
-unsigned char Register::set_b(unsigned char b)
+unsigned char Register::setRegisterB(unsigned char b)
 {
-    this->b = b;
+    if (validateValue(b) == true)
+        this->b = b;
 
-    return (get_b());
+    return (Register::getRegisterB());
 }
 
-unsigned char Register::get_c()
+unsigned char Register::getRegisterC()
 {
     return (this->c);
 }
 
-unsigned char Register::set_c(unsigned char c)
+unsigned char Register::setRegisterC(unsigned char c)
 {
-    this->c = c;
+    if (validateValue(c) == true)
+        this->c = c;
 
-    return (get_c());
+    return (Register::getRegisterC());
 }
 
-unsigned char Register::get_d()
+unsigned char Register::getRegisterD()
 {
     return (this->d);
 }
 
-unsigned char Register::set_d(unsigned char d)
+unsigned char Register::setRegisterD(unsigned char d)
 {
-    this->d = d;
+    if (validateValue(d) == true)
+        this->d = d;
 
-    return (get_d());
+    return (Register::getRegisterD());
 }
 
-unsigned char Register::get_e()
+unsigned char Register::getRegisterE()
 {
     return (this->e);
 }
 
-unsigned char Register::set_e(unsigned char e)
+unsigned char Register::setRegisterE(unsigned char e)
 {
-    this->e = e;
+    if (validateValue(e) == true)
+        this->e = e;
 
-    return (get_e());
+    return (Register::getRegisterE());
 }
 
-unsigned char Register::get_f()
+unsigned char Register::getRegisterF()
 {
     return (this->f);
 }
 
-unsigned char Register::set_f(unsigned char f)
+unsigned char Register::setRegisterF(unsigned char f)
 {
-    this->e = f;
+    if (validateValue(f) == true)
+        this->f = f;
 
-    return (get_f());
+    return (Register::getRegisterF());
 }
 
-unsigned char Register::get_h()
+unsigned char Register::getRegisterH()
 {
     return (this->h);
 }
 
-unsigned char Register::set_h(unsigned char h)
+unsigned char Register::setRegisterH(unsigned char h)
 {
-    this->h = h;
+    if (validateValue(h) == true)
+        this->h = h;
 
-    return (get_h());
+    return (Register::getRegisterH());
 }
 
-unsigned char Register::get_l()
+unsigned char Register::getRegisterL()
 {
     return (this->l);
 }
 
-unsigned char Register::set_l(unsigned char l)
+unsigned char Register::setRegisterL(unsigned char l)
 {
-    this->l = l;
+    if (validateValue(l) == true)
+        this->l = l;
 
-    return (get_l());
+    return (Register::getRegisterL());
 }
 
-unsigned char Register::get_p()
+unsigned char Register::getRegisterP()
 {
     return (this->p);
 }
 
-unsigned char Register::set_p(unsigned char p)
+unsigned char Register::setRegisterP(unsigned char p)
 {
-    this->p = p;
+    if (validateValue(p) == true)
+        this->p = p;
 
-    return (get_p());
+    return (Register::getRegisterP());
 }
 
-unsigned char Register::get_s()
+unsigned char Register::getRegisterS()
 {
     return (this->s);
 }
 
-unsigned char Register::set_s(unsigned char s)
+unsigned char Register::setRegisterS(unsigned char s)
 {
-    this->s = s;
+    if (validateValue(s) == true)
+        this->s = s;
 
-    return (get_s());
+    return (Register::getRegisterS());
 }
 
-unsigned short Register::get_af()
+unsigned short Register::getRegisterAF()
 {
     return (((unsigned short)this->a << 8) | this->f);
 }
 
-unsigned short Register::set_af(unsigned char a, unsigned char f)
+unsigned short Register::setRegisterAF(unsigned char a, unsigned char f)
 {
-    set_a(a);
-    set_f(f);
+    Register::setRegisterA(a);
+    Register::setRegisterF(f);
 
-    return (get_af());
+    return (Register::getRegisterAF());
 }
 
-unsigned short Register::get_bc()
+unsigned short Register::getRegisterBC()
 {
     return (((unsigned short)this->b << 8) | this->c);
 }
 
-unsigned short Register::set_bc(unsigned char b, unsigned char c)
+unsigned short Register::setRegisterBC(unsigned char b, unsigned char c)
 {
-    set_b(b);
-    set_c(c);
+    Register::setRegisterB(b);
+    Register::setRegisterC(c);
 
-    return (get_bc());
+    return (Register::getRegisterBC());
 }
 
 
-unsigned short Register::get_de()
+unsigned short Register::getRegisterDE()
 {
     return (((unsigned short)this->d << 8) | this->e);
 }
 
-unsigned short Register::set_de(unsigned char d, unsigned char e)
+unsigned short Register::setRegisterDE(unsigned char d, unsigned char e)
 {
-    set_d(d);
-    set_e(e);
+    Register::setRegisterD(d);
+    Register::setRegisterE(e);
 
-    return (get_de());
+    return (Register::getRegisterDE());
 }
 
-unsigned short Register::get_hl()
+unsigned short Register::getRegisterHL()
 {
     return (((unsigned short)this->h << 8) | this->l);
 }
 
-unsigned short Register::set_hl(unsigned char h, unsigned char l)
+unsigned short Register::setRegisterHL(unsigned char h, unsigned char l)
 {
-    set_h(h);
-    set_l(l);
+    Register::setRegisterH(h);
+    Register::setRegisterL(l);
 
-    return (get_hl());
+    return (Register::getRegisterHL());
 }
 
-unsigned short Register::get_sp()
+unsigned short Register::getRegisterSP()
 {
     return (((unsigned short)this->s << 8) | this->p);
 }
 
-unsigned short Register::set_sp(unsigned char s, unsigned char p)
+unsigned short Register::setRegisterSP(unsigned char s, unsigned char p)
 {
-    set_s(s);
-    set_p(p);
+    Register::setRegisterS(s);
+    Register::setRegisterP(p);
 
-    return (get_sp());
+    return (Register::getRegisterSP());
 }
 
-unsigned short Register::get_pc()
+unsigned short Register::getRegisterPC()
 {
     return (((unsigned short)this->p << 8) | this->c);
 }
 
-unsigned short Register::set_pc(unsigned char p, unsigned char c)
+unsigned short Register::setRegisterPC(unsigned char p, unsigned char c)
 {
-    set_p(p);
-    set_p(c);
+    Register::setRegisterP(p);
+    Register::setRegisterC(c);
 
-    return (get_pc());
+    return (Register::getRegisterPC());
 }

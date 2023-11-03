@@ -8,7 +8,7 @@ NAME	=	GameGirl
 
 INC_FLAG	=	-I $(INCLUDE) -g3 -Weverything -Wno-gnu -march=native -Wno-c++98-compat -Wno-padded -Wnon-virtual-dtor -Wno-weak-vtables
 
-OBJ_FLAG	=	-g3 -Weverything -Wno-gnu -march=native
+OBJ_FLAG	=	-g3 -Weverything -Wno-gnu -march=native -std=c++20
 
 DEBUG_FLAGS	=	-O0
 
