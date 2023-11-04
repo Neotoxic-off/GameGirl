@@ -15,6 +15,7 @@ void information(GameGirl *gamegirl)
         std::cout << "[+] cpu    INC A: '" << static_cast<int>(*(gamegirl->cpu->registers->a)) << "'" << std::endl;
         gamegirl->cpu->DEC(gamegirl->cpu->registers->a);
         std::cout << "[+] cpu    DEC A: '" << static_cast<int>(*(gamegirl->cpu->registers->a)) << "'" << std::endl;
+        std::cout << "[+] cpu       AF: '" << static_cast<int>(*(gamegirl->cpu->registers->af)) << "'" << std::endl;
     }
 }
 
