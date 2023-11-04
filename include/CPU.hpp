@@ -3,14 +3,16 @@
     #include <iostream>
 
     #include "Register.hpp"
+    #include "Logger.hpp"
     #include "Instruction.hpp"
 
     class CPU
     {
         public:
+            Logger *logger;
             Register *registers;
 
-            CPU();
+            CPU(Logger *);
             ~CPU();
 
             void *NOP();

@@ -10,7 +10,7 @@ Logger::~Logger()
 
 }
 
-void Logger::log(std::string message)
+void Logger::Log(std::string entity, std::string message)
 {
-    std::cout << "[LOG] " << message << std::endl;
+    std::cout << "[" << entity << "] " << message << std::endl;
 }

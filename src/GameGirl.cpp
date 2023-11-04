@@ -3,8 +3,8 @@
 GameGirl::GameGirl(std::string path)
 {
     this->logger = new Logger();
-    this->cpu = new CPU();
-    this->rom = new Rom(path);
+    this->cpu = new CPU(this->logger);
+    this->rom = new Rom(this->logger, path);
 }
 
 GameGirl::~GameGirl()

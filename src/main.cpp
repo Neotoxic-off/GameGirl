@@ -25,8 +25,8 @@ int main(int argc, char **argv)
     GameGirl *gamegirl = new GameGirl("rom/Pokemon - Emerald Version.gba");
     information(gamegirl);
 
-    gamegirl = new GameGirl("rom/Pokemon - Fire Red Version.gba");
-    information(gamegirl);
+    // gamegirl = new GameGirl("rom/Pokemon - Fire Red Version.gba");
+    // information(gamegirl);
 
     return (0);
 }
