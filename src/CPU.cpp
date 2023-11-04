@@ -129,9 +129,16 @@ void *CPU::RET(uint8_t *r)
 
 void *CPU::POP(uint8_t *r)
 {
+    uint8_t *lsb = new uint8_t(0x34);
+    uint8_t *msb = new uint8_t(0x12);
+    uint16_t *de = nullptr;
+
     this->logger->Log("CPU", "POP");
 
-    return (nullptr);
+    de = new uint16_t(static_cast<uint16_t>(*msb) << 8 | *lsb);
+    *this->registers->sp += 2;
+
+    return (de);
 }
 
 void *CPU::JP(uint8_t *r)

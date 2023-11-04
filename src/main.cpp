@@ -30,6 +30,7 @@ void test(GameGirl *gamegirl)
     gamegirl->cpu->SBC(gamegirl->cpu->registers->a, gamegirl->cpu->registers->b);
     
     gamegirl->cpu->CP(gamegirl->cpu->registers->a);
+    gamegirl->cpu->POP(gamegirl->cpu->registers->a);
 }
 
 int main(int argc, char **argv)
