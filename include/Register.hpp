@@ -13,13 +13,7 @@
             uint8_t *f;
             uint8_t *h;
             uint8_t *l;
-            uint8_t *p;
-            uint8_t *s;
-            
-            uint16_t *af;
-            uint16_t *bc;
-            uint16_t *de;
-            uint16_t *hl;
+
             uint16_t *sp;
             uint16_t *pc;
 

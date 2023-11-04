@@ -33,12 +33,25 @@ void test(GameGirl *gamegirl)
     gamegirl->cpu->POP(gamegirl->cpu->registers->a);
 }
 
+bool validate_args(int argc, char **argv)
+{
+    return (argc == 2);
+}
+
 int main(int argc, char **argv)
 {
-    GameGirl *gamegirl = new GameGirl("rom/Pokemon - Emerald Version.gba");
+    char *rom = nullptr;
+    GameGirl *gamegirl = nullptr;
 
-    information(gamegirl);
-    test(gamegirl);
+    if (validate_args(argc, argv) == true) {
+        rom = argv[1];
+        gamegirl = new GameGirl(rom);
+        information(gamegirl);
+        test(gamegirl);
+    } else {
+        std::cout << "no rom selected: " << argv[0] << " <rom path>" << std::endl;
+    }
+
 
     return (0);
 }
