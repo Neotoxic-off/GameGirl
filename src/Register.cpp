@@ -10,17 +10,17 @@ Register::~Register()
 
 }
 
-bool validateValue(unsigned char value)
+bool validateValue(uint8_t value)
 {
     return (value <= 255);
 }
 
-unsigned char Register::getRegisterA()
+uint8_t Register::getRegisterA()
 {
     return (this->a);
 }
 
-unsigned char Register::setRegisterA(unsigned char a)
+uint8_t Register::setRegisterA(uint8_t a)
 {
     if (validateValue(a) == true)
         this->a = a;
@@ -28,12 +28,12 @@ unsigned char Register::setRegisterA(unsigned char a)
     return (Register::getRegisterA());
 }
 
-unsigned char Register::getRegisterB()
+uint8_t Register::getRegisterB()
 {
     return (this->b);
 }
 
-unsigned char Register::setRegisterB(unsigned char b)
+uint8_t Register::setRegisterB(uint8_t b)
 {
     if (validateValue(b) == true)
         this->b = b;
@@ -41,12 +41,12 @@ unsigned char Register::setRegisterB(unsigned char b)
     return (Register::getRegisterB());
 }
 
-unsigned char Register::getRegisterC()
+uint8_t Register::getRegisterC()
 {
     return (this->c);
 }
 
-unsigned char Register::setRegisterC(unsigned char c)
+uint8_t Register::setRegisterC(uint8_t c)
 {
     if (validateValue(c) == true)
         this->c = c;
@@ -54,12 +54,12 @@ unsigned char Register::setRegisterC(unsigned char c)
     return (Register::getRegisterC());
 }
 
-unsigned char Register::getRegisterD()
+uint8_t Register::getRegisterD()
 {
     return (this->d);
 }
 
-unsigned char Register::setRegisterD(unsigned char d)
+uint8_t Register::setRegisterD(uint8_t d)
 {
     if (validateValue(d) == true)
         this->d = d;
@@ -67,12 +67,12 @@ unsigned char Register::setRegisterD(unsigned char d)
     return (Register::getRegisterD());
 }
 
-unsigned char Register::getRegisterE()
+uint8_t Register::getRegisterE()
 {
     return (this->e);
 }
 
-unsigned char Register::setRegisterE(unsigned char e)
+uint8_t Register::setRegisterE(uint8_t e)
 {
     if (validateValue(e) == true)
         this->e = e;
@@ -80,12 +80,12 @@ unsigned char Register::setRegisterE(unsigned char e)
     return (Register::getRegisterE());
 }
 
-unsigned char Register::getRegisterF()
+uint8_t Register::getRegisterF()
 {
     return (this->f);
 }
 
-unsigned char Register::setRegisterF(unsigned char f)
+uint8_t Register::setRegisterF(uint8_t f)
 {
     if (validateValue(f) == true)
         this->f = f;
@@ -93,12 +93,12 @@ unsigned char Register::setRegisterF(unsigned char f)
     return (Register::getRegisterF());
 }
 
-unsigned char Register::getRegisterH()
+uint8_t Register::getRegisterH()
 {
     return (this->h);
 }
 
-unsigned char Register::setRegisterH(unsigned char h)
+uint8_t Register::setRegisterH(uint8_t h)
 {
     if (validateValue(h) == true)
         this->h = h;
@@ -106,12 +106,12 @@ unsigned char Register::setRegisterH(unsigned char h)
     return (Register::getRegisterH());
 }
 
-unsigned char Register::getRegisterL()
+uint8_t Register::getRegisterL()
 {
     return (this->l);
 }
 
-unsigned char Register::setRegisterL(unsigned char l)
+uint8_t Register::setRegisterL(uint8_t l)
 {
     if (validateValue(l) == true)
         this->l = l;
@@ -119,12 +119,12 @@ unsigned char Register::setRegisterL(unsigned char l)
     return (Register::getRegisterL());
 }
 
-unsigned char Register::getRegisterP()
+uint8_t Register::getRegisterP()
 {
     return (this->p);
 }
 
-unsigned char Register::setRegisterP(unsigned char p)
+uint8_t Register::setRegisterP(uint8_t p)
 {
     if (validateValue(p) == true)
         this->p = p;
@@ -132,12 +132,12 @@ unsigned char Register::setRegisterP(unsigned char p)
     return (Register::getRegisterP());
 }
 
-unsigned char Register::getRegisterS()
+uint8_t Register::getRegisterS()
 {
     return (this->s);
 }
 
-unsigned char Register::setRegisterS(unsigned char s)
+uint8_t Register::setRegisterS(uint8_t s)
 {
     if (validateValue(s) == true)
         this->s = s;
@@ -145,12 +145,12 @@ unsigned char Register::setRegisterS(unsigned char s)
     return (Register::getRegisterS());
 }
 
-unsigned short Register::getRegisterAF()
+uint16_t Register::getRegisterAF()
 {
-    return (((unsigned short)this->a << 8) | this->f);
+    return (((uint16_t)this->a << 8) | this->f);
 }
 
-unsigned short Register::setRegisterAF(unsigned char a, unsigned char f)
+uint16_t Register::setRegisterAF(uint8_t a, uint8_t f)
 {
     Register::setRegisterA(a);
     Register::setRegisterF(f);
@@ -158,12 +158,12 @@ unsigned short Register::setRegisterAF(unsigned char a, unsigned char f)
     return (Register::getRegisterAF());
 }
 
-unsigned short Register::getRegisterBC()
+uint16_t Register::getRegisterBC()
 {
-    return (((unsigned short)this->b << 8) | this->c);
+    return (((uint16_t)this->b << 8) | this->c);
 }
 
-unsigned short Register::setRegisterBC(unsigned char b, unsigned char c)
+uint16_t Register::setRegisterBC(uint8_t b, uint8_t c)
 {
     Register::setRegisterB(b);
     Register::setRegisterC(c);
@@ -172,12 +172,12 @@ unsigned short Register::setRegisterBC(unsigned char b, unsigned char c)
 }
 
 
-unsigned short Register::getRegisterDE()
+uint16_t Register::getRegisterDE()
 {
-    return (((unsigned short)this->d << 8) | this->e);
+    return (((uint16_t)this->d << 8) | this->e);
 }
 
-unsigned short Register::setRegisterDE(unsigned char d, unsigned char e)
+uint16_t Register::setRegisterDE(uint8_t d, uint8_t e)
 {
     Register::setRegisterD(d);
     Register::setRegisterE(e);
@@ -185,12 +185,12 @@ unsigned short Register::setRegisterDE(unsigned char d, unsigned char e)
     return (Register::getRegisterDE());
 }
 
-unsigned short Register::getRegisterHL()
+uint16_t Register::getRegisterHL()
 {
-    return (((unsigned short)this->h << 8) | this->l);
+    return (((uint16_t)this->h << 8) | this->l);
 }
 
-unsigned short Register::setRegisterHL(unsigned char h, unsigned char l)
+uint16_t Register::setRegisterHL(uint8_t h, uint8_t l)
 {
     Register::setRegisterH(h);
     Register::setRegisterL(l);
@@ -198,12 +198,12 @@ unsigned short Register::setRegisterHL(unsigned char h, unsigned char l)
     return (Register::getRegisterHL());
 }
 
-unsigned short Register::getRegisterSP()
+uint16_t Register::getRegisterSP()
 {
-    return (((unsigned short)this->s << 8) | this->p);
+    return (((uint16_t)this->s << 8) | this->p);
 }
 
-unsigned short Register::setRegisterSP(unsigned char s, unsigned char p)
+uint16_t Register::setRegisterSP(uint8_t s, uint8_t p)
 {
     Register::setRegisterS(s);
     Register::setRegisterP(p);
@@ -211,12 +211,12 @@ unsigned short Register::setRegisterSP(unsigned char s, unsigned char p)
     return (Register::getRegisterSP());
 }
 
-unsigned short Register::getRegisterPC()
+uint16_t Register::getRegisterPC()
 {
-    return (((unsigned short)this->p << 8) | this->c);
+    return (((uint16_t)this->p << 8) | this->c);
 }
 
-unsigned short Register::setRegisterPC(unsigned char p, unsigned char c)
+uint16_t Register::setRegisterPC(uint8_t p, uint8_t c)
 {
     Register::setRegisterP(p);
     Register::setRegisterC(c);

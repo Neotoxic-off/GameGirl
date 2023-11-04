@@ -3,12 +3,17 @@
 GameGirl::GameGirl()
 {
     this->romData = nullptr;
-    this->logger = Logger();
+
+    this->logger = new Logger();
+    this->memory = new Memory();
 }
 
 GameGirl::~GameGirl()
 {
     delete[] this->romData;
+
+    delete[] this->logger;
+    delete[] this->memory;
 }
 
 bool GameGirl::LoadRom(std::string path)

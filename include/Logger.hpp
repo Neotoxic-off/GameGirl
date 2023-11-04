@@ -1,11 +1,13 @@
-#include <string>
-#include <iostream>
+#pragma once
 
-class Logger
-{
-    public:
-        Logger();
-        ~Logger();
+    #include <string>
+    #include <iostream>
 
-        void log(std::string);
-};
+    class Logger
+    {
+        public:
+            Logger();
+            ~Logger();
+
+            void log(std::string);
+    };

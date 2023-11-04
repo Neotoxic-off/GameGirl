@@ -1,11 +1,15 @@
-class Instruction
-{
-    public:
-        Instruction(char *, void *, unsigned char);
-        ~Instruction();
+#pragma once
 
-    private:
-        char *disassembly;
-        void *execute;
-        unsigned char length;
-};
+    #include <cinttypes>
+
+    class Instruction
+    {
+        public:
+            Instruction(char *, void *, uint8_t);
+            ~Instruction();
+
+        private:
+            char *disassembly;
+            void *execute;
+            uint8_t length;
+    };
