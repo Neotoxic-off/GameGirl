@@ -1,23 +1,20 @@
 #pragma once
 
-    #include <fstream>
     #include <iostream>
 
     #include "Logger.hpp"
     #include "Memory.hpp"
+    #include "Rom.hpp"
 
     class GameGirl
     {
         public:
             Memory *memory;
+            Rom *rom;
 
-            GameGirl();
+            GameGirl(std::string);
             ~GameGirl();
 
-            bool LoadRom(std::string);
-
         private:
-            char *romData;
-
             Logger *logger;
     };
