@@ -4,7 +4,7 @@ Rom::Rom(std::string path)
 {
     this->path = path;
     this->status = false;
-    this->title = nullptr;
+    this->title = new char[17];
     this->data = nullptr;
     this->size = 0;
 
@@ -28,9 +28,9 @@ bool Rom::Load()
         romFile.seekg(0, std::ios::beg);
         this->data = new char[this->size];
         romFile.read(this->data, this->size);
-        this->title = new char[16];
-        romFile.seekg(0x134, std::ios::beg);
+        romFile.seekg(0xA0, std::ios::beg);
         romFile.read(this->title, 16);
+        this->title[16] = '\0';
         romFile.close();
 
         return (true);

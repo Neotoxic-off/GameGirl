@@ -17,11 +17,15 @@ void information(GameGirl *gamegirl)
         std::cout << "[+] cpu    DEC A: '" << static_cast<int>(*(gamegirl->cpu->registers->a)) << "'" << std::endl;
         std::cout << "[+] cpu       AF: '" << static_cast<int>(*(gamegirl->cpu->registers->af)) << "'" << std::endl;
     }
+    std::cout << std::endl;
 }
 
 int main(int argc, char **argv)
 {
     GameGirl *gamegirl = new GameGirl("rom/Pokemon - Emerald Version.gba");
+    information(gamegirl);
+
+    gamegirl = new GameGirl("rom/Pokemon - Fire Red Version.gba");
     information(gamegirl);
 
     return (0);

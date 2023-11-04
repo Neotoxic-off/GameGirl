@@ -1,6 +1,6 @@
 #include "Instruction.hpp"
 
-Instruction::Instruction(char *disassembly, void *execute, uint8_t length)
+Instruction::Instruction(const char *disassembly, void *execute, uint8_t length)
 {
     this->disassembly = disassembly;
     this->execute = execute;

@@ -5,11 +5,11 @@
     class Instruction
     {
         public:
-            Instruction(char *, void *, uint8_t);
+            Instruction(const char *, void *, uint8_t);
             ~Instruction();
 
         private:
-            char *disassembly;
+            const char *disassembly;
             void *execute;
             uint8_t length;
     };
