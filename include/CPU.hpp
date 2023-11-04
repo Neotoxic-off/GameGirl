@@ -18,13 +18,17 @@
             void *NOP();
             void *INC(uint8_t *);
             void *DEC(uint8_t *);
-            void *ADD(uint8_t *);
-            void *SUB(uint8_t *);
-            void *ADC(uint8_t *);
-            void *SBC(uint8_t *);
+
+            void *ADD(uint8_t *, uint8_t *);
+            void *SUB(uint8_t *, uint8_t *);
+
+            void *ADC(uint8_t *, uint8_t *);
+            void *SBC(uint8_t *, uint8_t *);
+
             void *AND(uint8_t *);
             void *XOR(uint8_t *);
             void *OR(uint8_t *);
+
             void *CP(uint8_t *);
             void *RET(uint8_t *);
             void *POP(uint8_t *);

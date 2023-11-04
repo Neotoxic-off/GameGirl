@@ -38,30 +38,48 @@ void *CPU::DEC(uint8_t *r)
     return (nullptr);
 }
 
-void *CPU::ADD(uint8_t *r)
+void *CPU::ADD(uint8_t *a, uint8_t *b)
 {
     this->logger->Log("CPU", "ADD");
 
+    *a += *b;
+
     return (nullptr);
 }
 
-void *CPU::SUB(uint8_t *r)
+void *CPU::SUB(uint8_t *a, uint8_t *b)
 {
     this->logger->Log("CPU", "SUB");
 
+    *a -= *b;
+
     return (nullptr);
 }
 
-void *CPU::ADC(uint8_t *r)
+void *CPU::ADC(uint8_t *a, uint8_t *b)
 {
+    bool flag = true;
+    uint16_t result = 0;
+
     this->logger->Log("CPU", "ADC");
 
+    result = static_cast<uint16_t>(*a) + static_cast<uint16_t>(*a) + static_cast<uint16_t>(flag);
+    flag = (result > 0xFF);
+    *this->registers->a = static_cast<uint8_t>(result);
+
     return (nullptr);
 }
 
-void *CPU::SBC(uint8_t *r)
+void *CPU::SBC(uint8_t *a, uint8_t *b)
 {
+    bool flag = true;
+    uint16_t result = 0;
+
     this->logger->Log("CPU", "SBC");
+
+    result = static_cast<uint16_t>(*a) - static_cast<uint16_t>(*a) - static_cast<uint16_t>(flag);
+    flag = (result > 0xFF);
+    *this->registers->a = static_cast<uint8_t>(result);
 
     return (nullptr);
 }
@@ -70,12 +88,16 @@ void *CPU::AND(uint8_t *r)
 {
     this->logger->Log("CPU", "AND");
 
+    *this->registers->a &= *r;
+
     return (nullptr);
 }
 
 void *CPU::XOR(uint8_t *r)
 {
     this->logger->Log("CPU", "XOR");
+
+    *this->registers->a ^= *r;
 
     return (nullptr);
 }
@@ -84,12 +106,16 @@ void *CPU::OR(uint8_t *r)
 {
     this->logger->Log("CPU", "OR");
 
+    *this->registers->a |= *r;
+
     return (nullptr);
 }
 
 void *CPU::CP(uint8_t *r)
 {
     this->logger->Log("CPU", "CP");
+
+    *this->registers->a = *this->registers->a - *r;
 
     return (nullptr);
 }

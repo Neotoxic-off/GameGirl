@@ -9,24 +9,35 @@ void information(GameGirl *gamegirl)
     {
         std::cout << "[+] path: " << gamegirl->rom->path << std::endl;
         std::cout << "[+] title: " << gamegirl->rom->title << std::endl;
-        std::cout << "[+] cpu (" << &gamegirl->cpu << ")" << std::endl;
-        std::cout << "[+] cpu NORMAL A: '" << static_cast<int>(*(gamegirl->cpu->registers->a)) << "'" << std::endl;
-        gamegirl->cpu->INC(gamegirl->cpu->registers->a);
-        std::cout << "[+] cpu    INC A: '" << static_cast<int>(*(gamegirl->cpu->registers->a)) << "'" << std::endl;
-        gamegirl->cpu->DEC(gamegirl->cpu->registers->a);
-        std::cout << "[+] cpu    DEC A: '" << static_cast<int>(*(gamegirl->cpu->registers->a)) << "'" << std::endl;
-        std::cout << "[+] cpu       AF: '" << static_cast<int>(*(gamegirl->cpu->registers->af)) << "'" << std::endl;
+        std::cout << "[+] cpu: " << &gamegirl->cpu << std::endl;
     }
-    std::cout << std::endl;
+}
+
+void test(GameGirl *gamegirl)
+{
+    std::cout << "[+] tests: " << std::endl;
+    gamegirl->cpu->INC(gamegirl->cpu->registers->b);
+    gamegirl->cpu->DEC(gamegirl->cpu->registers->a);
+
+    gamegirl->cpu->OR(gamegirl->cpu->registers->b);
+    gamegirl->cpu->XOR(gamegirl->cpu->registers->b);
+    gamegirl->cpu->AND(gamegirl->cpu->registers->b);
+
+    gamegirl->cpu->ADD(gamegirl->cpu->registers->a, gamegirl->cpu->registers->b);
+    gamegirl->cpu->SUB(gamegirl->cpu->registers->a, gamegirl->cpu->registers->b);
+    
+    gamegirl->cpu->ADC(gamegirl->cpu->registers->a, gamegirl->cpu->registers->b);
+    gamegirl->cpu->SBC(gamegirl->cpu->registers->a, gamegirl->cpu->registers->b);
+    
+    gamegirl->cpu->CP(gamegirl->cpu->registers->a);
 }
 
 int main(int argc, char **argv)
 {
     GameGirl *gamegirl = new GameGirl("rom/Pokemon - Emerald Version.gba");
-    information(gamegirl);
 
-    // gamegirl = new GameGirl("rom/Pokemon - Fire Red Version.gba");
-    // information(gamegirl);
+    information(gamegirl);
+    test(gamegirl);
 
     return (0);
 }
