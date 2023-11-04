@@ -3,13 +3,13 @@
     #include <iostream>
 
     #include "Logger.hpp"
-    #include "Memory.hpp"
+    #include "CPU.hpp"
     #include "Rom.hpp"
 
     class GameGirl
     {
         public:
-            Memory *memory;
+            CPU *cpu;
             Rom *rom;
 
             GameGirl(std::string);

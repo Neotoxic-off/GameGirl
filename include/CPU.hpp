@@ -1,16 +1,21 @@
 #pragma once
 
+    #include <iostream>
+
     #include "Register.hpp"
     #include "Instruction.hpp"
 
-    class Memory
+    class CPU
     {
         public:
             Register *registers;
-            std::size_t registers_length;
 
-            Memory();
-            ~Memory();
+            CPU();
+            ~CPU();
+
+            void *NOP();
+            void *INC(uint8_t *);
+            void *DEC(uint8_t *);
 
         private:
             Instruction instructions[256] = {

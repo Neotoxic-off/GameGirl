@@ -3,13 +3,13 @@
 GameGirl::GameGirl(std::string path)
 {
     this->logger = new Logger();
-    this->memory = new Memory();
+    this->cpu = new CPU();
     this->rom = new Rom(path);
 }
 
 GameGirl::~GameGirl()
 {
     delete[] this->logger;
-    delete[] this->memory;
+    delete[] this->cpu;
     delete[] this->rom;
 }
