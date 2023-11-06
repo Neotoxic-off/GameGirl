@@ -16,12 +16,14 @@ Rom::Rom(Logger *logger, std::string path)
 Rom::~Rom()
 {
     delete[] this->title;
-    delete[] this->data;
+
+    if (this->data != nullptr) {
+        delete[] this->data;
+    }
 }
 
 void Rom::LoadSize(std::ifstream &file)
 {
-    file.seekg(0, std::ios::end);
     this->size = file.tellg();
     file.seekg(0, std::ios::beg);
 
@@ -32,8 +34,12 @@ void Rom::LoadSize(std::ifstream &file)
 
 void Rom::LoadData(std::ifstream &file)
 {
-    this->data = new char[this->size];
-    file.read(this->data, this->size);
+    size_t size = static_cast<std::size_t>(this->size);
+
+    this->data = new char[size + 1];
+    file.read(this->data, size);
+    this->data[this->size] = '\0';
+
 }
 
 void Rom::LoadTitle(std::ifstream &file)
@@ -47,9 +53,9 @@ void Rom::LoadTitle(std::ifstream &file)
 
 bool Rom::Load()
 {
-    std::ifstream file(this->path, std::ios::binary);
+    std::ifstream file(this->path, std::ios::binary | std::ios::ate);
 
-    if (file) {
+    if (file.is_open() == true) {
         Rom::LoadSize(file);
         Rom::LoadData(file);
         Rom::LoadTitle(file);

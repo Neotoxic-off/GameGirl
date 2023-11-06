@@ -1,5 +1,6 @@
 #pragma once
 
+    #include <map>
     #include <iostream>
 
     #include "Register.hpp"
@@ -15,6 +16,13 @@
             Flags *flags;
 
             uint8_t *memory;
+
+            std::map<char, std::string> Opcodes = {
+                { 0x78, "MOV A, B" },
+                { 0x81, "ADD A, C" },
+                { 0x92, "SUB D" },
+                { 0xC9, "RET" }
+            };
 
             CPU(Logger *, uint8_t *);
             ~CPU();
@@ -45,6 +53,7 @@
             void *EI(uint8_t *);
 
         private:
+
             Instruction instructions[256] = {
                 Instruction("NOP",         nullptr, 1),
                 Instruction("LD BC,d16",   nullptr, 3),

@@ -8,15 +8,23 @@ void information(GameGirl *gamegirl)
     if (status == true)
     {
         std::cout << "[+] path: " << gamegirl->rom->path << std::endl;
+        std::cout << "[+] rom data: " << &gamegirl->rom->data << std::endl;
         std::cout << "[+] cpu: " << &gamegirl->cpu << std::endl;
+        std::cout << "[+] cpu memory: " << &gamegirl->cpu->memory << std::endl;
+    }
+}
 
-        std::cout << "[+] cpu memory: " << sizeof(gamegirl->cpu->memory) << std::endl;
+void disassembly(GameGirl *gamegirl)
+{
+    for (size_t i = 0; i < gamegirl->rom->size; i++) {
+        if (gamegirl->cpu->Opcodes.find(gamegirl->rom->data[i]) != gamegirl->cpu->Opcodes.end()) {
+            std::cout << gamegirl->cpu->Opcodes[gamegirl->rom->data[i]] << std::endl;
+        }
     }
 }
 
 void test(GameGirl *gamegirl)
 {
-    std::cout << "[+] tests: " << std::endl;
     gamegirl->cpu->INC(gamegirl->cpu->registers->b);
     gamegirl->cpu->DEC(gamegirl->cpu->registers->a);
 
@@ -49,6 +57,7 @@ int main(int argc, char **argv)
         gamegirl = new GameGirl(rom);
         information(gamegirl);
         test(gamegirl);
+        disassembly(gamegirl);
     } else {
         std::cout << "no rom selected: " << argv[0] << " <rom path>" << std::endl;
     }
