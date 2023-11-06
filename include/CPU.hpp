@@ -11,6 +11,11 @@
         public:
             Logger *logger;
             Register *registers;
+            bool Z;
+            bool N;
+            bool H;
+            bool C;
+            uint8_t memory[0xFFFF];
 
             CPU(Logger *);
             ~CPU();
