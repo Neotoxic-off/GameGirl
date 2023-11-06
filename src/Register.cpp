@@ -7,7 +7,6 @@ Register::Register()
     this->c = new uint8_t(0);
     this->d = new uint8_t(0);
     this->e = new uint8_t(0);
-    this->f = new uint8_t(0);
     this->h = new uint8_t(0);
     this->l = new uint8_t(0);
 

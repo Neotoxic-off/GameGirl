@@ -1,16 +1,20 @@
 #include "CPU.hpp"
 
-CPU::CPU(Logger *logger)
+CPU::CPU(Logger *logger, uint8_t *size)
 {
     this->logger = logger;
 
     this->registers = new Register();
+    this->flags = new Flags();
+    this->memory = new uint8_t(*size);
 }
 
 CPU::~CPU()
 {
     delete[] this->registers;
+    delete[] this->flags;
     delete[] this->logger;
+    delete[] this->memory;
 }
 
 void *CPU::NOP()

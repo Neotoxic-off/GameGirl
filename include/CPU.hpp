@@ -5,19 +5,18 @@
     #include "Register.hpp"
     #include "Logger.hpp"
     #include "Instruction.hpp"
+    #include "Flags.hpp"
 
     class CPU
     {
         public:
             Logger *logger;
             Register *registers;
-            bool Z;
-            bool N;
-            bool H;
-            bool C;
-            uint8_t memory[0xFFFF];
+            Flags *flags;
 
-            CPU(Logger *);
+            uint8_t *memory;
+
+            CPU(Logger *, uint8_t *);
             ~CPU();
 
             void *NOP();

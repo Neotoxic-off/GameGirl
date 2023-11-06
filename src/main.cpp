@@ -8,8 +8,9 @@ void information(GameGirl *gamegirl)
     if (status == true)
     {
         std::cout << "[+] path: " << gamegirl->rom->path << std::endl;
-        std::cout << "[+] title: " << gamegirl->rom->title << std::endl;
         std::cout << "[+] cpu: " << &gamegirl->cpu << std::endl;
+
+        std::cout << "[+] cpu memory: " << sizeof(gamegirl->cpu->memory) << std::endl;
     }
 }
 
