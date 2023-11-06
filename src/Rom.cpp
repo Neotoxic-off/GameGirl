@@ -24,6 +24,10 @@ void Rom::LoadSize(std::ifstream &file)
     file.seekg(0, std::ios::end);
     this->size = file.tellg();
     file.seekg(0, std::ios::beg);
+
+    this->logger->Log("rom: size (mb)", std::to_string(
+        static_cast<double>(this->size) / (1024 * 1024)
+    ));
 }
 
 void Rom::LoadData(std::ifstream &file)
@@ -37,6 +41,8 @@ void Rom::LoadTitle(std::ifstream &file)
     file.seekg(0xA0, std::ios::beg);
     file.read(this->title, 16);
     this->title[16] = '\0';
+
+    this->logger->Log("rom: title", this->title);
 }
 
 bool Rom::Load()

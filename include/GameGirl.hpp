@@ -11,6 +11,7 @@
         public:
             CPU *cpu;
             Rom *rom;
+            uint8_t *memory;
 
             GameGirl(std::string);
             ~GameGirl();
