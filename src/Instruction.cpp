@@ -4,7 +4,7 @@ Instruction::Instruction(const char *disassembly, void *execute, uint8_t length)
 {
     this->disassembly = disassembly;
     this->execute = execute;
-    this->length = length;
+    this->length = new uint8_t(length);
 }
 
 Instruction::~Instruction()

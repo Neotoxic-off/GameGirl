@@ -22,8 +22,8 @@ void disassembler(GameGirl *gamegirl)
         if (bypass == true && i >= 10)
             break;
         if (gamegirl->rom->data[i] < 256) {
-            std::cout << "(" << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length << "): " << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].disassembly << std::endl;
-            i += gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length;
+            std::cout << "(" << &gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length << "): " << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].disassembly << std::endl;
+            i += *gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length;
         } else {
             std::cout << "SKIP: 0x" << std::hex << (uint8_t)gamegirl->rom->data[i] << std::endl;
         }
