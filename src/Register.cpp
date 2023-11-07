@@ -7,6 +7,7 @@ Register::Register()
     this->c = 0x00;
     this->d = 0x00;
     this->e = 0x00;
+    this->f = 0x00;
     this->h = 0x00;
     this->l = 0x00;
 

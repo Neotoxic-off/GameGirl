@@ -14,11 +14,16 @@ void information(GameGirl *gamegirl)
     }
 }
 
-void disassembly(GameGirl *gamegirl)
+void disassembler(GameGirl *gamegirl)
 {
+    bool bypass = true;
+
     for (size_t i = 0; i < gamegirl->rom->size; i++) {
+        if (bypass == true && i >= 10)
+            break;
         if (gamegirl->rom->data[i] < 256) {
-            std::cout << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].disassembly << std::endl;
+            std::cout << "(" << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length << "): " << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].disassembly << std::endl;
+            i += gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length;
         } else {
             std::cout << "SKIP: 0x" << std::hex << (uint8_t)gamegirl->rom->data[i] << std::endl;
         }
@@ -46,7 +51,7 @@ int main(int argc, char **argv)
         gamegirl = new GameGirl(rom);
         information(gamegirl);
         test(gamegirl);
-        //disassembly(gamegirl);
+        disassembler(gamegirl);
     } else {
         std::cout << "no rom selected: " << argv[0] << " <rom path>" << std::endl;
     }

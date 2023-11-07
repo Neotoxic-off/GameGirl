@@ -294,9 +294,16 @@
             ~CPU();
 
             void *NOP();
+            void *LD_16_16(uint8_t &, uint8_t &, uint16_t &);
+            void *LD_8_8(uint8_t &, uint8_t &);
+            void *LD_BC_A();
             void *INC(uint8_t &);
             void *DEC(uint8_t &);
-
+            void *LD_B_d8(uint8_t &);
             void *ADD(uint8_t &, uint8_t &);
             void *SUB(uint8_t &, uint8_t &);
+            void *RLCA();
+            void *ADD_HL_BC();
+            void *LD_C_d8(uint8_t &);
+            void *RRCA();
     };
