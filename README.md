@@ -12,8 +12,8 @@ make
 ```
 
 ## Todo
-- [ ] Read all assembly opcodes
-- [ ] Register all opcodes
+- [x] Read all assembly opcodes
+- [x] Register all opcodes
 - [ ] Bind opcode to pointer function
 - [ ] Implement GUI with OpenGL
 - [ ] Intercept user Input
