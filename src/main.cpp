@@ -46,7 +46,7 @@ int main(int argc, char **argv)
         gamegirl = new GameGirl(rom);
         information(gamegirl);
         test(gamegirl);
-        disassembly(gamegirl);
+        //disassembly(gamegirl);
     } else {
         std::cout << "no rom selected: " << argv[0] << " <rom path>" << std::endl;
     }
