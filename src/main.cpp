@@ -29,19 +29,6 @@ void test(GameGirl *gamegirl)
 {
     gamegirl->cpu->INC(gamegirl->cpu->registers->b);
     gamegirl->cpu->DEC(gamegirl->cpu->registers->a);
-
-    gamegirl->cpu->OR(gamegirl->cpu->registers->b);
-    gamegirl->cpu->XOR(gamegirl->cpu->registers->b);
-    gamegirl->cpu->AND(gamegirl->cpu->registers->b);
-
-    gamegirl->cpu->ADD(gamegirl->cpu->registers->a, gamegirl->cpu->registers->b);
-    gamegirl->cpu->SUB(gamegirl->cpu->registers->a, gamegirl->cpu->registers->b);
-    
-    gamegirl->cpu->ADC(gamegirl->cpu->registers->a, gamegirl->cpu->registers->b);
-    gamegirl->cpu->SBC(gamegirl->cpu->registers->a, gamegirl->cpu->registers->b);
-    
-    gamegirl->cpu->CP(gamegirl->cpu->registers->a);
-    gamegirl->cpu->POP(gamegirl->cpu->registers->a);
 }
 
 bool validate_args(int argc, char **argv)

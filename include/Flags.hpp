@@ -3,10 +3,10 @@
     class Flags
     {
         public:
-            bool *z;
-            bool *n;
-            bool *h;
-            bool *c;
+            bool z;
+            bool n;
+            bool h;
+            bool c;
 
             Flags();
             ~Flags();

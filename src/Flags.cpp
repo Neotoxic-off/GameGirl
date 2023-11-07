@@ -2,16 +2,13 @@
 
 Flags::Flags()
 {
-    this->z = new bool(false);
-    this->n = new bool(false);
-    this->h = new bool(false);
-    this->c = new bool(false);
+    this->z = false;
+    this->n = false;
+    this->h = false;
+    this->c = false;
 }
 
 Flags::~Flags()
 {
-    delete[] this->z;
-    delete[] this->n;
-    delete[] this->h;
-    delete[] this->c;
+
 }

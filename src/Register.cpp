@@ -2,16 +2,16 @@
 
 Register::Register()
 {
-    this->a = new uint8_t(0);
-    this->b = new uint8_t(0);
-    this->c = new uint8_t(0);
-    this->d = new uint8_t(0);
-    this->e = new uint8_t(0);
-    this->h = new uint8_t(0);
-    this->l = new uint8_t(0);
+    this->a = 0x00;
+    this->b = 0x00;
+    this->c = 0x00;
+    this->d = 0x00;
+    this->e = 0x00;
+    this->h = 0x00;
+    this->l = 0x00;
 
-    this->sp = new uint16_t(0);
-    this->pc = new uint16_t(0);
+    this->sp = 0x00;
+    this->pc = 0x00;
 }
 
 Register::~Register()
