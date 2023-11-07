@@ -17,6 +17,11 @@ jobs:
     - name: Build project
       run: make
 
+    - name: Build & run project
+      run: |
+          make
+          ./GameGirl rom/Pokemon - Emerald Version.gba
+
     - name: Build debug project
       run: make debug
 
