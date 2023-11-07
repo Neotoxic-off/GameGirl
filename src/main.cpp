@@ -17,8 +17,10 @@ void information(GameGirl *gamegirl)
 void disassembly(GameGirl *gamegirl)
 {
     for (size_t i = 0; i < gamegirl->rom->size; i++) {
-        if (gamegirl->cpu->Opcodes.find(gamegirl->rom->data[i]) != gamegirl->cpu->Opcodes.end()) {
-            std::cout << gamegirl->cpu->Opcodes[gamegirl->rom->data[i]] << std::endl;
+        if (gamegirl->rom->data[i] < 256) {
+            std::cout << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].disassembly << std::endl;
+        } else {
+            std::cout << "SKIP: 0x" << std::hex << (uint8_t)gamegirl->rom->data[i] << std::endl;
         }
     }
 }
