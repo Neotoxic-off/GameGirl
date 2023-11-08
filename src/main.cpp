@@ -19,11 +19,11 @@ void disassembler(GameGirl *gamegirl)
     bool bypass = true;
 
     for (size_t i = 0; i < gamegirl->rom->size; i++) {
-        if (bypass == true && i >= 10)
+        if (bypass == true && i >= 50)
             break;
         if (gamegirl->rom->data[i] < 256) {
-            std::cout << "(" << &gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length << "): " << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].disassembly << std::endl;
-            i += *gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length;
+            std::cout << "[+] (" << (int)gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length << ") " << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].disassembly << std::endl;
+            i += gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length;
         } else {
             std::cout << "SKIP: 0x" << std::hex << (uint8_t)gamegirl->rom->data[i] << std::endl;
         }

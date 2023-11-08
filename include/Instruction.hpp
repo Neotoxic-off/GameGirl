@@ -7,7 +7,7 @@
         public:
             const char *disassembly;
             void *execute;
-            uint8_t *length;
+            uint8_t length;
 
             Instruction(const char *, void *, uint8_t);
             ~Instruction();

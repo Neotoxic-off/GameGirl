@@ -12,6 +12,8 @@ Register::Register()
     this->l = 0x00;
 
     this->sp = 0x00;
+    this->hl = 0x00;
+    this->bc = 0x00;
     this->pc = 0x00;
 }
 
