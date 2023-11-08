@@ -364,4 +364,15 @@
             void *RET_NZ();
             void *RET_Z();
             void *RET_NC();
+            void *RET_C();
+            void *RETI();
+            void *RST_00();
+            void *RST_08();
+            void *RST_10();
+            void *RST_18();
+            void *RST_20();
+            void *RST_28();
+            void *RST_30();
+            void *RST_38();
+            void *HALT();
     };

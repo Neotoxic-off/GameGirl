@@ -637,3 +637,94 @@ void *CPU::RET_NC()
     }
     return nullptr;
 }
+
+void *CPU::RET_C()
+{
+    this->logger->Log("CPU", "RET_C");
+
+    if (this->registers->f & this->flags->c) {
+        // Return from subroutine if C flag is set
+        // Implement return logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::RETI()
+{
+    this->logger->Log("CPU", "RETI");
+    // Return from interrupt
+    // Implement return logic if necessary
+    return nullptr;
+}
+
+void *CPU::RST_00()
+{
+    this->logger->Log("CPU", "RST_00");
+    // Restart at address 0x00
+    // Implement restart logic if necessary
+    return nullptr;
+}
+
+void *CPU::RST_08()
+{
+    this->logger->Log("CPU", "RST_08");
+    // Restart at address 0x08
+    // Implement restart logic if necessary
+    return nullptr;
+}
+
+void *CPU::RST_10()
+{
+    this->logger->Log("CPU", "RST_10");
+    // Restart at address 0x10
+    // Implement restart logic if necessary
+    return nullptr;
+}
+
+void *CPU::RST_18()
+{
+    this->logger->Log("CPU", "RST_18");
+    // Restart at address 0x18
+    // Implement restart logic if necessary
+    return nullptr;
+}
+
+void *CPU::RST_20()
+{
+    this->logger->Log("CPU", "RST_20");
+    // Restart at address 0x20
+    // Implement restart logic if necessary
+    return nullptr;
+}
+
+void *CPU::RST_28()
+{
+    this->logger->Log("CPU", "RST_28");
+    // Restart at address 0x28
+    // Implement restart logic if necessary
+    return nullptr;
+}
+
+void *CPU::RST_30()
+{
+    this->logger->Log("CPU", "RST_30");
+    // Restart at address 0x30
+    // Implement restart logic if necessary
+    return nullptr;
+}
+
+void *CPU::RST_38()
+{
+    this->logger->Log("CPU", "RST_38");
+    // Restart at address 0x38
+    // Implement restart logic if necessary
+    return nullptr;
+}
+
+void *CPU::HALT()
+{
+    this->logger->Log("CPU", "HALT");
+    // Halt the CPU
+    // Implement halt logic if necessary
+    return nullptr;
+}
