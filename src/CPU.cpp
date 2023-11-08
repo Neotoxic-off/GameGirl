@@ -158,7 +158,7 @@ void *CPU::LD_DE_A()
 {
     // Load value from register A into memory location pointed by DE
     // Assuming memory write logic is implemented elsewhere
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::INC_DE()
@@ -251,7 +251,7 @@ void *CPU::JR_NZ_r8(int8_t &offset)
     if ((this->registers->f & this->flags->z) == 0) {
         this->registers->pc += offset;
     }
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::LD_HL_d16(uint16_t &value)
@@ -264,28 +264,28 @@ void *CPU::LD_HL_A()
 {
     // Load value from register A into memory location pointed by HL
     // Assuming memory write logic is implemented elsewhere
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::INC_HL()
 {
     this->logger->Log("CPU", "INC_HL");
     this->registers->hl += 1;
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::INC_H()
 {
     this->logger->Log("CPU", "INC_H");
     CPU::INC(this->registers->h);
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::DEC_H()
 {
     this->logger->Log("CPU", "DEC_H");
     CPU::DEC(this->registers->h);
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::LD_H_d8(uint8_t &value)
@@ -312,7 +312,7 @@ void *CPU::DAA()
         this->registers->f |= this->flags->z;
     }
 
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::JR_Z_r8(int8_t &offset)
@@ -321,7 +321,7 @@ void *CPU::JR_Z_r8(int8_t &offset)
     if (this->registers->f & this->flags->z) {
         this->registers->pc += offset;
     }
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::ADD_HL_HL()
@@ -337,7 +337,7 @@ void *CPU::ADD_HL_HL()
     }
     this->registers->hl = static_cast<uint16_t>(result & 0xFFFF);
 
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::LD_A_HL()
@@ -345,28 +345,28 @@ void *CPU::LD_A_HL()
     this->logger->Log("CPU", "LD_A_HL");
     // Load value from memory location pointed by HL into register A
     // Assuming memory read logic is implemented elsewhere
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::DEC_HL()
 {
     this->logger->Log("CPU", "DEC_HL");
     this->registers->hl -= 1;
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::INC_L()
 {
     this->logger->Log("CPU", "INC_L");
     CPU::INC(this->registers->l);
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::DEC_L()
 {
     this->logger->Log("CPU", "DEC_L");
     CPU::DEC(this->registers->l);
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::LD_L_d8(uint8_t &value)
@@ -379,23 +379,27 @@ void *CPU::CPL()
     this->logger->Log("CPU", "CPL");
     this->registers->a = ~this->registers->a;
     this->registers->f |= (this->flags->n | this->flags->h);
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::JR_NC_r8(int8_t &offset)
 {
     this->logger->Log("CPU", "JR_NC_r8");
+
     if ((this->registers->f & this->flags->c) == 0) {
         this->registers->pc += offset;
     }
-    return nullptr;
+
+    return (nullptr);
 }
 
 void *CPU::LD_SP_d16(uint16_t &value)
 {
     this->logger->Log("CPU", "LD_SP_d16");
+
     this->registers->sp = value;
-    return nullptr;
+
+    return (nullptr);
 }
 
 void *CPU::LD_HL_A_d8()
@@ -403,12 +407,233 @@ void *CPU::LD_HL_A_d8()
     this->logger->Log("CPU", "LD_HL_A_d8");
     // Load value from register A into memory location pointed by HL
     // Assuming memory write logic is implemented elsewhere
-    return nullptr;
+    return (nullptr);
 }
 
 void *CPU::INC_SP()
 {
     this->logger->Log("CPU", "INC_SP");
     this->registers->sp += 1;
+    return (nullptr);
+}
+
+void *CPU::DEC_SP()
+{
+    this->logger->Log("CPU", "DEC_SP");
+    this->registers->sp -= 1;
+    return nullptr;
+}
+
+void *CPU::SPHL()
+{
+    this->logger->Log("CPU", "SPHL");
+    this->registers->sp = this->registers->hl;
+    return nullptr;
+}
+
+void *CPU::JR_C_r8(int8_t &offset)
+{
+    this->logger->Log("CPU", "JR_C_r8");
+    if (this->registers->f & this->flags->c) {
+        this->registers->pc += offset;
+    }
+    return nullptr;
+}
+
+void *CPU::LD_d16_A(uint16_t &address)
+{
+    this->logger->Log("CPU", "LD_d16_A");
+    // Load value from register A into memory location specified by d16
+    // Assuming memory write logic is implemented elsewhere
+    return nullptr;
+}
+
+void *CPU::A16_SP()
+{
+    this->logger->Log("CPU", "A16_SP");
+    // Store SP at the memory location specified by the 16-bit address
+    // Assuming memory write logic is implemented elsewhere
+    return nullptr;
+}
+
+void *CPU::LD_A_d16(uint16_t &address)
+{
+    this->logger->Log("CPU", "LD_A_d16");
+    // Load value from memory location specified by d16 into register A
+    // Assuming memory read logic is implemented elsewhere
+    return nullptr;
+}
+
+void *CPU::EI()
+{
+    this->logger->Log("CPU", "EI");
+    // Enable interrupts
+    // Implement interrupt handling logic if necessary
+    return nullptr;
+}
+
+void *CPU::DI()
+{
+    this->logger->Log("CPU", "DI");
+    // Disable interrupts
+    // Implement interrupt handling logic if necessary
+    return nullptr;
+}
+
+void *CPU::CALL(uint16_t &address)
+{
+    this->logger->Log("CPU", "CALL");
+    // Call subroutine at the specified address
+    // Implement call logic if necessary
+    return nullptr;
+}
+
+void *CPU::PUSH_AF()
+{
+    this->logger->Log("CPU", "PUSH_AF");
+    // Push register AF onto the stack
+    // Assuming stack operations are implemented elsewhere
+    return nullptr;
+}
+
+void *CPU::RST(uint8_t &offset)
+{
+    this->logger->Log("CPU", "RST");
+    // Restart the CPU and jump to the specified address
+    // Implement restart logic if necessary
+    return nullptr;
+}
+
+void *CPU::RET()
+{
+    this->logger->Log("CPU", "RET");
+    // Return from subroutine
+    // Implement return logic if necessary
+    return nullptr;
+}
+
+void *CPU::POP_AF()
+{
+    this->logger->Log("CPU", "POP_AF");
+    // Pop value from the stack into register AF
+    // Assuming stack operations are implemented elsewhere
+    return nullptr;
+}
+
+void *CPU::JP(uint16_t &address)
+{
+    this->logger->Log("CPU", "JP");
+    // Jump to the specified address
+    // Implement jump logic if necessary
+    return nullptr;
+}
+
+void *CPU::JP_NZ(uint16_t &address)
+{
+    this->logger->Log("CPU", "JP_NZ");
+    if ((this->registers->f & this->flags->z) == 0) {
+        // Jump to the specified address if Z flag is not set
+        // Implement jump logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::JP_Z(uint16_t &address)
+{
+    this->logger->Log("CPU", "JP_Z");
+    if (this->registers->f & this->flags->z) {
+        // Jump to the specified address if Z flag is set
+        // Implement jump logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::JP_NC(uint16_t &address)
+{
+    this->logger->Log("CPU", "JP_NC");
+    if ((this->registers->f & this->flags->c) == 0) {
+        // Jump to the specified address if C flag is not set
+        // Implement jump logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::JP_C(uint16_t &address)
+{
+    this->logger->Log("CPU", "JP_C");
+    if (this->registers->f & this->flags->c) {
+        // Jump to the specified address if C flag is set
+        // Implement jump logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::CALL_NZ(uint16_t &address)
+{
+    this->logger->Log("CPU", "CALL_NZ");
+    if ((this->registers->f & this->flags->z) == 0) {
+        // Call subroutine at the specified address if Z flag is not set
+        // Implement call logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::CALL_Z(uint16_t &address)
+{
+    this->logger->Log("CPU", "CALL_Z");
+    if (this->registers->f & this->flags->z) {
+        // Call subroutine at the specified address if Z flag is set
+        // Implement call logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::CALL_NC(uint16_t &address)
+{
+    this->logger->Log("CPU", "CALL_NC");
+    if ((this->registers->f & this->flags->c) == 0) {
+        // Call subroutine at the specified address if C flag is not set
+        // Implement call logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::CALL_C(uint16_t &address)
+{
+    this->logger->Log("CPU", "CALL_C");
+    if (this->registers->f & this->flags->c) {
+        // Call subroutine at the specified address if C flag is set
+        // Implement call logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::RET_NZ()
+{
+    this->logger->Log("CPU", "RET_NZ");
+    if ((this->registers->f & this->flags->z) == 0) {
+        // Return from subroutine if Z flag is not set
+        // Implement return logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::RET_Z()
+{
+    this->logger->Log("CPU", "RET_Z");
+    if (this->registers->f & this->flags->z) {
+        // Return from subroutine if Z flag is set
+        // Implement return logic if necessary
+    }
+    return nullptr;
+}
+
+void *CPU::RET_NC()
+{
+    this->logger->Log("CPU", "RET_NC");
+    if ((this->registers->f & this->flags->c) == 0) {
+        // Return from subroutine if C flag is not set
+        // Implement return logic if necessary
+    }
     return nullptr;
 }
