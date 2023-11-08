@@ -26,11 +26,18 @@ uint8_t CPU::Execute(uint8_t disassembly)
         *instruction = this->instructions[disassembly];
 
         this->logger->Log("CPU", instruction->disassembly);
-        // instruction->execute();
+        instruction->execute();
         return (instruction->length);
     }
 
     return (0);
+}
+
+void *CPU::NIY()
+{
+    this->logger->Log("CPU", "NOT IMPLEMENTED YET ;w;");
+
+    return (nullptr);
 }
 
 void *CPU::NOP()
@@ -123,16 +130,22 @@ void *CPU::RLCA()
 
 void *CPU::ADD_HL_BC()
 {
-    uint32_t result = static_cast<uint32_t>(this->registers->hl) + static_cast<uint32_t>(this->registers->bc);
+    uint16_t hl = this->registers->GetRegister16(this->registers->h, this->registers->l);
+    uint16_t bc = this->registers->GetRegister16(this->registers->b, this->registers->c);
+    uint32_t result = (static_cast<uint32_t>(hl) + static_cast<uint32_t>(bc));
     
     this->registers->f = 0;
     if ((result & 0x10000) != 0) {
         this->registers->f |= this->flags->c;
     }
-    if (((this->registers->hl ^ this->registers->bc ^ (result & 0xFFFF)) & 0x1000) != 0) {
+    if (((hl ^ bc ^ (result & 0xFFFF)) & 0x1000) != 0) {
         this->registers->f |= this->flags->h;
     }
-    this->registers->hl = static_cast<uint16_t>(result & 0xFFFF);
+    this->registers->SetRegister16(
+        this->registers->h,
+        this->registers->l,
+        static_cast<uint16_t>(result & 0xFFFF)
+    );
 
     return (nullptr);
 }
@@ -180,14 +193,22 @@ void *CPU::LD_DE_A()
 void *CPU::INC_DE()
 {
     this->logger->Log("CPU", "INC_DE");
-    this->registers->de += 1;
+
+    this->registers->SetRegister16(
+        this->registers->d,
+        this->registers->e,
+        this->registers->GetRegister16(this->registers->d, this->registers->e) + 1
+    );
+
     return (nullptr);
 }
 
 void *CPU::INC_D()
 {
     this->logger->Log("CPU", "INC_D");
+
     CPU::INC(this->registers->d);
+
     return (nullptr);
 }
 
@@ -230,16 +251,22 @@ void *CPU::JR_r8(int8_t &offset)
 
 void *CPU::ADD_HL_DE()
 {
-    uint32_t result = static_cast<uint32_t>(this->registers->hl) + static_cast<uint32_t>(this->registers->de);
+    uint16_t hl = this->registers->GetRegister16(this->registers->h, this->registers->l);
+    uint16_t de = this->registers->GetRegister16(this->registers->d, this->registers->e);
+    uint32_t result = static_cast<uint32_t>(hl) + static_cast<uint32_t>(de);
 
     this->registers->f = 0;
     if ((result & 0x10000) != 0) {
         this->registers->f |= this->flags->c;
     }
-    if (((this->registers->hl ^ this->registers->de ^ (result & 0xFFFF)) & 0x1000) != 0) {
+    if (((hl ^ de ^ (result & 0xFFFF)) & 0x1000) != 0) {
         this->registers->f |= this->flags->h;
     }
-    this->registers->hl = static_cast<uint16_t>(result & 0xFFFF);
+    this->registers->SetRegister16(
+        this->registers->h,
+        this->registers->l,
+        static_cast<uint16_t>(result & 0xFFFF)
+    );
 
     return (nullptr);
 }
@@ -286,7 +313,13 @@ void *CPU::LD_HL_A()
 void *CPU::INC_HL()
 {
     this->logger->Log("CPU", "INC_HL");
-    this->registers->hl += 1;
+
+    this->registers->SetRegister16(
+        this->registers->h,
+        this->registers->l,
+        this->registers->GetRegister16(this->registers->h, this->registers->l) + 1
+    );
+
     return (nullptr);
 }
 
@@ -342,16 +375,21 @@ void *CPU::JR_Z_r8(int8_t &offset)
 
 void *CPU::ADD_HL_HL()
 {
-    uint32_t result = static_cast<uint32_t>(this->registers->hl) + static_cast<uint32_t>(this->registers->hl);
+    uint16_t hl = this->registers->GetRegister16(this->registers->h, this->registers->l);
+    uint32_t result = static_cast<uint32_t>(hl) + static_cast<uint32_t>(hl);
 
     this->registers->f = 0;
     if ((result & 0x10000) != 0) {
         this->registers->f |= this->flags->c;
     }
-    if (((this->registers->hl ^ this->registers->hl ^ (result & 0xFFFF)) & 0x1000) != 0) {
+    if (((hl ^ hl ^ (result & 0xFFFF)) & 0x1000) != 0) {
         this->registers->f |= this->flags->h;
     }
-    this->registers->hl = static_cast<uint16_t>(result & 0xFFFF);
+    this->registers->SetRegister16(
+        this->registers->h,
+        this->registers->l,
+        static_cast<uint16_t>(result & 0xFFFF)
+    );
 
     return (nullptr);
 }
@@ -367,7 +405,13 @@ void *CPU::LD_A_HL()
 void *CPU::DEC_HL()
 {
     this->logger->Log("CPU", "DEC_HL");
-    this->registers->hl -= 1;
+
+    this->registers->SetRegister16(
+        this->registers->h,
+        this->registers->l,
+        this->registers->GetRegister16(this->registers->h, this->registers->l) - 1
+    );
+
     return (nullptr);
 }
 
@@ -443,7 +487,9 @@ void *CPU::DEC_SP()
 void *CPU::SPHL()
 {
     this->logger->Log("CPU", "SPHL");
-    this->registers->sp = this->registers->hl;
+
+    this->registers->sp = this->registers->GetRegister16(this->registers->h, this->registers->l);
+
     return nullptr;
 }
 

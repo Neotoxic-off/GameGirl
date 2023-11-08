@@ -15,11 +15,15 @@
             uint8_t l;
 
             uint16_t sp;
-            uint16_t de;
-            uint16_t hl;
-            uint16_t bc;
             uint16_t pc;
 
             Register();
             ~Register();
+
+            uint16_t GetRegister16(uint8_t &, uint8_t &);
+            uint16_t SetRegister16(uint8_t &, uint8_t &, uint16_t);
+
+        private:
+            uint8_t GetHighByte(uint16_t);
+            uint8_t GetLowByte(uint16_t);
     };
