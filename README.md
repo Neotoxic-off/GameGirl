@@ -20,6 +20,7 @@ make
 ## Todo
 - [x] Read all assembly opcodes
 - [x] Register all opcodes
+- [ ] Link all uint16_t registers to unit8_t
 - [ ] Bind opcode to pointer function
 - [ ] Implement GUI with OpenGL
 - [ ] Intercept user Input
