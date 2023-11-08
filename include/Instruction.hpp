@@ -1,14 +1,15 @@
 #pragma once
 
     #include <cinttypes>
+    #include <functional>
 
     class Instruction
     {
         public:
-            const char *disassembly;
-            void *execute;
+            char *disassembly;
+            std::function<void(void)> execute;
             uint8_t length;
 
-            Instruction(const char *, void *, uint8_t);
+            Instruction(char *, std::function<void(void)>, uint8_t);
             ~Instruction();
     };

@@ -17,23 +17,18 @@ void information(GameGirl *gamegirl)
 void disassembler(GameGirl *gamegirl)
 {
     bool bypass = true;
+    uint8_t padding = 0;
 
     for (size_t i = 0; i < gamegirl->rom->size; i++) {
         if (bypass == true && i >= 50)
             break;
         if (gamegirl->rom->data[i] < 256) {
-            std::cout << "[+] (" << (int)gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length << ") " << gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].disassembly << std::endl;
-            i += gamegirl->cpu->instructions[(uint8_t)gamegirl->rom->data[i]].length;
+            padding = gamegirl->cpu->Execute((uint8_t)gamegirl->rom->data[i]);
+            i += padding;
         } else {
             std::cout << "SKIP: 0x" << std::hex << (uint8_t)gamegirl->rom->data[i] << std::endl;
         }
     }
-}
-
-void test(GameGirl *gamegirl)
-{
-    gamegirl->cpu->INC(gamegirl->cpu->registers->b);
-    gamegirl->cpu->DEC(gamegirl->cpu->registers->a);
 }
 
 bool validate_args(int argc, char **argv)
@@ -50,7 +45,6 @@ int main(int argc, char **argv)
         rom = argv[1];
         gamegirl = new GameGirl(rom);
         information(gamegirl);
-        test(gamegirl);
         disassembler(gamegirl);
     } else {
         std::cout << "no rom selected: " << argv[0] << " <rom path>" << std::endl;

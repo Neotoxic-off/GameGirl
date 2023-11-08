@@ -2,6 +2,7 @@
 
     #include <map>
     #include <iostream>
+    #include <unordered_map>
 
     #include "Register.hpp"
     #include "Logger.hpp"
@@ -14,6 +15,15 @@
             Logger *logger;
             Register *registers;
             Flags *flags;
+
+            uint8_t *memory;
+
+            CPU(Logger *, uint8_t *);
+            ~CPU();
+
+            uint8_t Execute(uint8_t);
+
+        private:
             Instruction instructions[256] = {
                 Instruction("NOP",         nullptr, 1),
                 Instruction("LD BC,d16",   nullptr, 3),
@@ -288,11 +298,6 @@
                 Instruction("RST 38H",     nullptr, 1)
             };
 
-            uint8_t *memory;
-
-            CPU(Logger *, uint8_t *);
-            ~CPU();
-
             void *NOP();
             void *LD_16_16(uint8_t &, uint8_t &, uint16_t &);
             void *LD_8_8(uint8_t &, uint8_t &);
@@ -338,7 +343,6 @@
             void *LD_SP_d16(uint16_t &);
             void *LD_HL_A_d8();
             void *INC_SP();
-
             void *DEC_SP();
             void *SPHL();
             void *JR_C_r8(int8_t &);

@@ -13,8 +13,24 @@ CPU::~CPU()
 {
     delete[] this->registers;
     delete[] this->flags;
-    delete[] this->logger;
     delete[] this->memory;
+
+    delete[] this->logger;
+}
+
+uint8_t CPU::Execute(uint8_t disassembly)
+{
+    Instruction *instruction = new Instruction(nullptr, nullptr, 0);
+
+    if (disassembly < 256) {
+        *instruction = this->instructions[disassembly];
+
+        this->logger->Log("CPU", instruction->disassembly);
+        // instruction->execute();
+        return (instruction->length);
+    }
+
+    return (0);
 }
 
 void *CPU::NOP()
