@@ -25,103 +25,166 @@
 
         private:
             void *NIY();
+
+            // Special
             void *NOP();
-            void *LD_16_16(uint8_t &, uint8_t &, uint16_t &);
-            void *LD_8_8(uint8_t &, uint8_t &);
-            void *LD_BC_A();
-            void *INC(uint8_t &);
-            void *DEC(uint8_t &);
-            void *LD_B_d8(uint8_t &);
-            void *ADD(uint8_t &, uint8_t &);
-            void *SUB(uint8_t &, uint8_t &);
-            void *RLCA();
-            void *ADD_HL_BC();
-            void *LD_C_d8(uint8_t &);
-            void *RRCA();
             void *STOP();
-            void *LD_DE_d16(uint16_t &);
-            void *LD_DE_A();
-            void *INC_DE();
-            void *INC_D();
-            void *DEC_D();
-            void *LD_D_d8(uint8_t &);
+            void *HALT();
+
+            void *RLCA();
             void *RLA();
-            void *JR_r8(int8_t &);
-            void *ADD_HL_DE();
-            void *LD_E_d8(uint8_t &);
+            void *RRCA();
             void *RRA();
-            void *JR_NZ_r8(int8_t &);
-            void *LD_HL_d16(uint16_t &);
-            void *LD_HL_A();
-            void *INC_HL();
-            void *INC_H();
-            void *DEC_H();
-            void *LD_H_d8(uint8_t &);
             void *DAA();
-            void *JR_Z_r8(int8_t &);
-            void *ADD_HL_HL();
-            void *LD_A_HL();
-            void *DEC_HL();
-            void *INC_L();
-            void *DEC_L();
-            void *LD_L_d8(uint8_t &);
             void *CPL();
-            void *JR_NC_r8(int8_t &);
-            void *LD_SP_d16(uint16_t &);
-            void *LD_HL_A_d8();
-            void *INC_SP();
-            void *DEC_SP();
             void *SPHL();
-            void *JR_C_r8(int8_t &);
-            void *LD_d16_A(uint16_t &);
-            void *A16_SP();
-            void *LD_A_d16(uint16_t &);
+            void *RETI();
             void *EI();
             void *DI();
-            void *CALL(uint16_t &);
-            void *PUSH_AF();
-            void *RST(uint8_t &);
-            void *RET();
-            void *POP_AF();
-            void *JP(uint16_t &);
-            void *JP_NZ(uint16_t &);
-            void *JP_Z(uint16_t &);
-            void *JP_NC(uint16_t &);
-            void *JP_C(uint16_t &);
-            void *CALL_NZ(uint16_t &);
-            void *CALL_Z(uint16_t &);
-            void *CALL_NC(uint16_t &);
-            void *CALL_C(uint16_t &);
-            void *RET_NZ();
-            void *RET_Z();
-            void *RET_NC();
-            void *RET_C();
-            void *RETI();
-            void *RST_00();
-            void *RST_08();
-            void *RST_10();
-            void *RST_18();
-            void *RST_20();
-            void *RST_28();
-            void *RST_30();
-            void *RST_38();
-            void *HALT();
+            void *A16_SP();
+
+            // LD
+                // 8b
+                void *LD_8_8(uint8_t &, uint8_t &);
+                void *LD_A_A();
+                void *LD_B_d8(uint8_t &);
+                void *LD_C_d8(uint8_t &);
+                void *LD_D_d8(uint8_t &);
+                void *LD_H_d8(uint8_t &);
+                void *LD_A_HL();
+                void *LD_L_d8(uint8_t &);
+                void *LD_A_d16(uint16_t &);
+                void *LD_E_d8(uint8_t &);
+
+                // 16b
+                void *LD_16_16(uint8_t &, uint8_t &, uint16_t &);
+                void *LD_d16_A(uint16_t &);
+                void *LD_SP_d16(uint16_t &);
+                void *LD_HL_A_d8();
+                void *LD_HL_d16(uint16_t &);
+                void *LD_HL_A();
+                void *LD_BC_A();
+                void *LD_DE_A();
+                void *LD_DE_d16(uint16_t &);
+
+            // INC
+                // 8b
+                void *INC(uint8_t &);
+                void *INC_B();
+                void *INC_C();
+                void *INC_D();
+
+                // 16b
+                void *INC_DE();
+                void *INC_HL();
+                void *INC_SP();
+                void *INC_L();
+                void *INC_H();
+
+            // DEC
+                // 8b
+                void *DEC(uint8_t &);
+                void *DEC_D();
+                void *DEC_C();
+                void *DEC_L();
+                void *DEC_H();
+
+                // 16b
+                void *DEC_HL();
+                void *DEC_SP();
+            
+            // ADD
+                // 8b
+                void *ADD(uint8_t &, uint8_t &);
+            
+                // 16b
+                void *ADD_HL_BC();
+                void *ADD_HL_DE();
+                void *ADD_HL_HL();
+            
+            // SUB
+                // 8b
+                void *SUB(uint8_t &, uint8_t &);
+
+                // 16b
+            
+
+            // JR
+                // 8b
+                void *JR_r8(int8_t &);
+                void *JR_Z_r8(int8_t &);
+                void *JR_C_r8(int8_t &);
+            
+                // 16b
+                void *JR_NC_r8(int8_t &);
+                void *JR_NZ_r8(int8_t &);
+            
+
+            // PUSH
+                // 8b
+                void *PUSH_AF();
+            
+            // POP
+                // 8b
+                void *POP_AF();
+
+            // JP
+                // 8b
+                void *JP(uint16_t &);
+                void *JP_Z(uint16_t &);
+                void *JP_C(uint16_t &);
+
+                // 16b
+                void *JP_NZ(uint16_t &);
+                void *JP_NC(uint16_t &);
+
+            // CALL
+                // 8b
+                void *CALL_Z(uint16_t &);
+                void *CALL_C(uint16_t &);
+
+                // 16b
+                void *CALL(uint16_t &);
+                void *CALL_NZ(uint16_t &);
+                void *CALL_NC(uint16_t &);
+
+            // RET
+                // 8b
+                void *RET();
+                void *RET_Z();
+                void *RET_C();
+
+                // 16b
+                void *RET_NZ();
+                void *RET_NC();
+
+            // RST
+                // 8b
+                void *RST(uint8_t &);
+                void *RST_00();
+                void *RST_08();
+                void *RST_10();
+                void *RST_18();
+                void *RST_20();
+                void *RST_28();
+                void *RST_30();
+                void *RST_38();
 
             Instruction instructions[256] = {
                 Instruction("NOP",         std::bind(&CPU::NIY, this), 1),
                 Instruction("LD BC,d16",   std::bind(&CPU::NIY, this), 3),
                 Instruction("LD (BC),A",   std::bind(&CPU::NIY, this), 1),
                 Instruction("INC BC",      std::bind(&CPU::NIY, this), 1),
-                Instruction("INC B",       std::bind(&CPU::NIY, this), 1),
+                Instruction("INC B",       std::bind(&CPU::INC_B, this), 1),
                 Instruction("DEC B",       std::bind(&CPU::NIY, this), 1),
                 Instruction("LD B,d8",     std::bind(&CPU::NIY, this), 2),
-                Instruction("RLCA",        std::bind(&CPU::NIY, this), 1),
+                Instruction("RLCA",        std::bind(&CPU::RLCA, this), 1),
                 Instruction("LD (a16),SP", std::bind(&CPU::NIY, this), 3),
                 Instruction("ADD HL,BC",   std::bind(&CPU::NIY, this), 1),
                 Instruction("LD A,(BC)",   std::bind(&CPU::NIY, this), 1),
                 Instruction("DEC BC",      std::bind(&CPU::NIY, this), 1),
-                Instruction("INC C",       std::bind(&CPU::NIY, this), 1),
-                Instruction("DEC C",       std::bind(&CPU::NIY, this), 1),
+                Instruction("INC C",       std::bind(&CPU::INC_C, this), 1),
+                Instruction("DEC C",       std::bind(&CPU::DEC_C, this), 1),
                 Instruction("LD C,d8",     std::bind(&CPU::NIY, this), 2),
                 Instruction("RRCA",        std::bind(&CPU::NIY, this), 1),
 
@@ -242,7 +305,7 @@
                 Instruction("LD A,H",      std::bind(&CPU::NIY, this), 1),
                 Instruction("LD A,L",      std::bind(&CPU::NIY, this), 1),
                 Instruction("LD A,(HL)",   std::bind(&CPU::NIY, this), 1),
-                Instruction("LD A,A",      std::bind(&CPU::NIY, this), 1),
+                Instruction("LD A,A",      std::bind(&CPU::LD_A_A, this), 1),
                 
                 Instruction("ADD A,B",     std::bind(&CPU::NIY, this), 1),
                 Instruction("ADD A,C",     std::bind(&CPU::NIY, this), 1),

@@ -24,8 +24,6 @@ uint8_t CPU::Execute(uint8_t disassembly)
 
     if (disassembly < 256) {
         *instruction = this->instructions[disassembly];
-
-        this->logger->Log("CPU", instruction->disassembly);
         instruction->execute();
         return (instruction->length);
     }
@@ -38,6 +36,13 @@ void *CPU::NIY()
     this->logger->Log("CPU", "NOT IMPLEMENTED YET ;w;");
 
     return (nullptr);
+}
+
+void *CPU::LD_A_A()
+{
+    this->logger->Log("CPU", "LD A, A");
+    
+    return nullptr;
 }
 
 void *CPU::NOP()
@@ -68,8 +73,7 @@ void *CPU::LD_8_8(uint8_t &a, uint8_t &value)
 
 void *CPU::LD_BC_A()
 {
-    // Load value from register A into memory location pointed by BC
-    // Assuming memory write logic is implemented elsewhere
+    this->logger->Log("CPU", "LD_BC_A");
 
     return (nullptr);
 }
@@ -83,11 +87,38 @@ void *CPU::INC(uint8_t &r)
     return (nullptr);
 }
 
+void *CPU::INC_B()
+{
+    this->logger->Log("CPU", "INC_B");
+
+    this->registers->b += 1;
+
+    return (nullptr);
+}
+
+void *CPU::INC_C()
+{
+    this->logger->Log("CPU", "INC_C");
+
+    this->registers->c += 1;
+
+    return (nullptr);
+}
+
 void *CPU::DEC(uint8_t &r)
 {
     this->logger->Log("CPU", "DEC");
 
     r -= 1;
+
+    return (nullptr);
+}
+
+void *CPU::DEC_C()
+{
+    this->logger->Log("CPU", "DEC_C");
+
+    this->registers->c -= 1;
 
     return (nullptr);
 }
@@ -117,9 +148,10 @@ void *CPU::SUB(uint8_t &a, uint8_t &b)
     return (nullptr);
 }
 
-
 void *CPU::RLCA()
 {
+    this->logger->Log("CPU", "RLCA");
+
     uint8_t carry = (this->registers->a & 0x80) >> 7;
 
     this->registers->a = (this->registers->a << 1) | carry;
@@ -130,6 +162,8 @@ void *CPU::RLCA()
 
 void *CPU::ADD_HL_BC()
 {
+    this->logger->Log("CPU", "ADD_HL_BC");
+
     uint16_t hl = this->registers->GetRegister16(this->registers->h, this->registers->l);
     uint16_t bc = this->registers->GetRegister16(this->registers->b, this->registers->c);
     uint32_t result = (static_cast<uint32_t>(hl) + static_cast<uint32_t>(bc));
@@ -152,6 +186,8 @@ void *CPU::ADD_HL_BC()
 
 void *CPU::LD_C_d8(uint8_t &value)
 {
+    this->logger->Log("CPU", "LD_C_d8");
+
     return (
         CPU::LD_8_8(this->registers->c, value)
     );
@@ -159,6 +195,8 @@ void *CPU::LD_C_d8(uint8_t &value)
 
 void *CPU::RRCA()
 {
+    this->logger->Log("CPU", "RRCA");
+
     uint8_t carry = this->registers->a & 1;
 
     this->registers->a = (this->registers->a >> 1) | (carry << 7);
