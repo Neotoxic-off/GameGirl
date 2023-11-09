@@ -46,6 +46,7 @@
             // LD
                 // 8b
                 void *LD_8_8(uint8_t &, uint8_t &);
+
                 void *LD_A_A();
                 void *LD_B_d8(uint8_t &);
                 void *LD_C_d8(uint8_t &);
