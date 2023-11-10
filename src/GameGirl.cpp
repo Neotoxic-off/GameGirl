@@ -1,5 +1,12 @@
 #include "GameGirl.hpp"
 
+GameGirl::GameGirl()
+{
+    this->tests = Tests();
+
+    this->tests.Run();
+}
+
 GameGirl::GameGirl(std::string path)
 {
     this->logger = new Logger();

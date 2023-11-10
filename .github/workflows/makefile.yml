@@ -22,6 +22,11 @@ jobs:
           make
           ./GameGirl "rom/Pokemon - Emerald Version.gba"
 
+    - name: Build & run tests
+      run: |
+          make
+          ./GameGirl "run_tests"
+
     - name: Build debug project
       run: make debug
 
