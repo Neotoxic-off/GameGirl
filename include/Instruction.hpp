@@ -6,10 +6,10 @@
     class Instruction
     {
         public:
-            char *disassembly;
+            const char *disassembly;
             std::function<void(void)> execute;
             uint8_t length;
 
-            Instruction(char *, std::function<void(void)>, uint8_t);
+            Instruction(const char *, std::function<void(void)>, uint8_t);
             ~Instruction();
     };

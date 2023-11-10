@@ -363,6 +363,29 @@ void *CPU::INC_DE()
     return (nullptr);
 }
 
+void *CPU::INC_BC()
+{
+    this->logger->Log("CPU", "INC_BC");
+
+    this->registers->SetRegister16(
+        this->registers->b,
+        this->registers->c,
+        this->registers->GetRegister16(this->registers->b, this->registers->c) + 1
+    );
+
+    return (nullptr);
+}
+
+void *CPU::INC_E()
+{
+    this->logger->Log("CPU", "INC_E");
+
+    CPU::INC(this->registers->e);
+
+    return (nullptr);
+}
+
+
 void *CPU::INC_D()
 {
     this->logger->Log("CPU", "INC_D");
@@ -424,6 +447,16 @@ void *CPU::DEC_C()
 
     return (nullptr);
 }
+
+void *CPU::DEC_E()
+{
+    this->logger->Log("CPU", "DEC_E");
+
+    this->registers->e -= 1;
+
+    return (nullptr);
+}
+
 
 void *CPU::DEC_H()
 {
