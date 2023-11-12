@@ -7,6 +7,8 @@
   <img src="https://img.shields.io/github/languages/code-size/Neotoxic-off/GameGirl"/>
 </p>
 
+![](images/banner.png)
+
 ## Build
 ```sh
 make
@@ -21,7 +23,7 @@ make
 - [x] Read all assembly opcodes
 - [x] Register all opcodes
 - [ ] Fix all warning
-- [ ] Link all uint16_t registers to unit8_t
+- [X] Link all uint16_t registers to unit8_t
 - [ ] Bind opcode to pointer function
 - [ ] Implement GUI with OpenGL
 - [ ] Intercept user Input
