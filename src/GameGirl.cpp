@@ -4,7 +4,7 @@ GameGirl::GameGirl()
 {
     this->tests = Tests();
 
-    this->tests.Run();
+    this->tests.TEST_Run();
 }
 
 GameGirl::GameGirl(std::string path)

@@ -38,13 +38,13 @@ bool validate_args(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-    std::string test_flag = std::string("run_tests");
+    const char *test_flag = "run_tests";
     char *rom = nullptr;
     GameGirl *gamegirl = nullptr;
 
     if (validate_args(argc, argv) == true) {
         rom = argv[1];
-        if (std::string(rom) == test_flag) {
+        if (rom == test_flag) {
             gamegirl = new GameGirl();
         } else {
             gamegirl = new GameGirl(rom);
@@ -54,7 +54,6 @@ int main(int argc, char **argv)
     } else {
         std::cout << "no rom selected: " << argv[0] << " <rom path>" << std::endl;
     }
-
 
     return (0);
 }

@@ -23,7 +23,6 @@
 
             uint8_t Execute(uint8_t);
 
-        private:
             void *NIY();
 
             // Special
@@ -174,6 +173,7 @@
                 void *RST_30();
                 void *RST_38();
 
+        private:
             Instruction instructions[256] = {
                 Instruction("NOP",         std::bind(&CPU::NOP, this), 1),
                 Instruction("LD BC,d16",   std::bind(&CPU::NIY, this), 3),

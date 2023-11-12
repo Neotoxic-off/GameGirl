@@ -7,7 +7,9 @@
   <img src="https://img.shields.io/github/languages/code-size/Neotoxic-off/GameGirl"/>
 </p>
 
-![](images/banner.png)
+<p align="center">
+  <img src="images/banner.png"/>
+</p>
 
 ## Build
 ```sh
