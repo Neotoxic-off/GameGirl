@@ -1,5 +1,4 @@
 # GameGirl
-🕹️ Game boy emulator in C++
 
 <p align="center">
   <img src="https://img.shields.io/github/issues/Neotoxic-off/GameGirl"/>
