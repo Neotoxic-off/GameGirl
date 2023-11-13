@@ -2,9 +2,7 @@
 
 GameGirl::GameGirl()
 {
-    this->tests = Tests();
-
-    this->tests.TEST_Run();
+    this->tests = new Tests();
 }
 
 GameGirl::GameGirl(std::string path)

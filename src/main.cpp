@@ -38,14 +38,15 @@ bool validate_args(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-    const char *test_flag = "run_tests";
+    std::string test_flag = std::string("run_tests");
     char *rom = nullptr;
     GameGirl *gamegirl = nullptr;
 
     if (validate_args(argc, argv) == true) {
         rom = argv[1];
-        if (rom == test_flag) {
+        if (std::string(rom) == test_flag) {
             gamegirl = new GameGirl();
+            gamegirl->tests->TEST_Run();
         } else {
             gamegirl = new GameGirl(rom);
             information(gamegirl);

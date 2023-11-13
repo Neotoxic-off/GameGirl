@@ -14,11 +14,12 @@
             CPU *cpu;
             Rom *rom;
 
+            Tests *tests;
+
             GameGirl();
             GameGirl(std::string);
             ~GameGirl();
 
         private:
             Logger *logger;
-            Tests tests;
     };
