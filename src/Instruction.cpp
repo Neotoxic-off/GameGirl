@@ -9,7 +9,5 @@ Instruction::Instruction(const char *disassembly, std::function<void(void)> exec
 
 Instruction::~Instruction()
 {
-    if (disassembly != nullptr) {
-        delete[] disassembly;
-    }
+    delete[] disassembly;
 }

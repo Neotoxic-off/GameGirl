@@ -14,7 +14,7 @@ GameGirl::GameGirl(std::string path)
 
 GameGirl::~GameGirl()
 {
-    delete[] this->logger;
+    // delete this->logger;
     delete[] this->cpu;
     delete[] this->rom;
 }
