@@ -91,7 +91,7 @@
                 Instruction("LD (a16),SP", std::bind(&CPU::NIY, this), 3),
                 Instruction("ADD HL,BC",   std::bind(&CPU::NIY, this), 1),
                 Instruction("LD A,(BC)",   std::bind(&CPU::NIY, this), 1),
-                Instruction("DEC BC",      std::bind(&CPU::NIY, this), 1),
+                Instruction("DEC BC",      std::bind(&CPU::DEC_BC, this), 1),
                 Instruction("INC C",       std::bind(&CPU::INC_C, this), 1),
                 Instruction("DEC C",       std::bind(&CPU::DEC_C, this), 1),
                 Instruction("LD C,d8",     std::bind(&CPU::NIY, this), 2),
