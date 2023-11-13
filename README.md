@@ -20,6 +20,11 @@ make
 ./GameGirl rom.gba
 ```
 
+## Tests
+```sh
+./GameGirl run_tests
+```
+
 ## Todo
 - [x] Read all assembly opcodes
 - [x] Register all opcodes
