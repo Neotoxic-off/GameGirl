@@ -29,6 +29,7 @@ make
 - [x] Read all assembly opcodes
 - [x] Register all opcodes
 - [ ] Fix all warning
+- [ ] Add unit tests
 - [X] Link all uint16_t registers to unit8_t
 - [ ] Bind opcode to pointer function
 - [ ] Implement GUI with OpenGL
