@@ -866,6 +866,7 @@ void *CPU::LD_L_d8()
 
 void *CPU::JR_NC_r8()
 {
+    this->logger->Log("CPU", "JR_NC_r8");
     int8_t r8 = fetch8();
 
     if (!this->flags->c) {
@@ -876,12 +877,14 @@ void *CPU::JR_NC_r8()
 
 void *CPU::LD_SP_d16()
 {
+    this->logger->Log("CPU", "LD_SP_d16");
     this->registers->sp = fetch16();
     return nullptr;
 }
 
 void *CPU::LD_HL_decrement_A()
 {
+    this->logger->Log("CPU", "LD_HL_decrement_A");
     uint16_t hl = 0;
 
     writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), this->registers->a);
@@ -893,12 +896,14 @@ void *CPU::LD_HL_decrement_A()
 
 void *CPU::LD_HL_d8()
 {
+    this->logger->Log("CPU", "LD_HL_d8");
     writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), fetch8());
     return nullptr;
 }
 
 void *CPU::SCF()
 {
+    this->logger->Log("CPU", "SCF");
     this->flags->c = true;
     this->flags->n = false;
     this->flags->h = false;
@@ -907,6 +912,7 @@ void *CPU::SCF()
 
 void *CPU::JR_C_r8()
 {
+    this->logger->Log("CPU", "JR_C_r8");
     int8_t r8 = fetch8();
     if (this->flags->c) {
         this->registers->pc += r8;
@@ -916,6 +922,7 @@ void *CPU::JR_C_r8()
 
 void *CPU::ADD_HL_SP()
 {
+    this->logger->Log("CPU", "ADD_HL_SP");
     add16(this->registers->GetRegister16(this->registers->h, this->registers->l),
           this->registers->sp);
     return nullptr;
@@ -923,6 +930,7 @@ void *CPU::ADD_HL_SP()
 
 void *CPU::LD_A_decrement_HL()
 {
+    this->logger->Log("CPU", "LD_A_decrement_HL");
     uint16_t hl = 0;
 
     this->registers->a = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
@@ -933,6 +941,7 @@ void *CPU::LD_A_decrement_HL()
 
 void *CPU::INC_A()
 {
+    this->logger->Log("CPU", "INC_A");
     this->registers->a++;
     updateFlags();
     return nullptr;
@@ -940,6 +949,7 @@ void *CPU::INC_A()
 
 void *CPU::DEC_A()
 {
+    this->logger->Log("CPU", "DEC_A");
     this->registers->a--;
     updateFlags();
     return nullptr;
@@ -947,12 +957,14 @@ void *CPU::DEC_A()
 
 void *CPU::LD_A_d8()
 {
+    this->logger->Log("CPU", "LD_A_d8");
     this->registers->a = fetch8();
     return nullptr;
 }
 
 void *CPU::CCF()
 {
+    this->logger->Log("CPU", "CCF");
     this->flags->c = !this->flags->c;
     this->flags->n = false;
     this->flags->h = false;
@@ -962,22 +974,17 @@ void *CPU::CCF()
 
 void CPU::updateFlags()
 {
-    // Zero Flag
     this->flags->z = (this->registers->a == 0);
 
-    // Subtraction Flag is always reset
     this->flags->n = false;
 
-    // Half Carry Flag
-    // Set if there is a carry from the low nibble (4th bit) in the result
     this->flags->h = ((this->registers->a & 0x0F) == 0x0F);
-
-    // Carry Flag is always reset
     this->flags->c = false;
 }
 
 void *CPU::LD_B_B()
 {
+    this->logger->Log("CPU", "LD_B_B");
     this->registers->b = this->registers->b;
     updateFlags();
 
@@ -986,6 +993,7 @@ void *CPU::LD_B_B()
 
 void *CPU::LD_B_C()
 {
+    this->logger->Log("CPU", "LD_B_C");
     this->registers->b = this->registers->c;
     updateFlags();
 
@@ -994,6 +1002,7 @@ void *CPU::LD_B_C()
 
 void *CPU::LD_B_D()
 {
+    this->logger->Log("CPU", "LD_B_D");
     this->registers->b = this->registers->d;
     updateFlags();
 
@@ -1002,6 +1011,7 @@ void *CPU::LD_B_D()
 
 void *CPU::LD_B_E()
 {
+    this->logger->Log("CPU", "LD_B_E");
     this->registers->b = this->registers->e;
     updateFlags();
 
@@ -1010,6 +1020,7 @@ void *CPU::LD_B_E()
 
 void *CPU::LD_B_H()
 {
+    this->logger->Log("CPU", "LD_B_H");
     this->registers->b = this->registers->h;
     updateFlags();
 
@@ -1018,6 +1029,7 @@ void *CPU::LD_B_H()
 
 void *CPU::LD_B_L()
 {
+    this->logger->Log("CPU", "LD_B_L");
     this->registers->b = this->registers->l;
     updateFlags();
 
@@ -1026,6 +1038,7 @@ void *CPU::LD_B_L()
 
 void *CPU::LD_B_HL()
 {
+    this->logger->Log("CPU", "LD_B_HL");
     this->registers->b = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
     updateFlags();
 
@@ -1034,6 +1047,7 @@ void *CPU::LD_B_HL()
 
 void *CPU::LD_B_A()
 {
+    this->logger->Log("CPU", "LD_B_A");
     this->registers->b = this->registers->a;
     updateFlags();
 
@@ -1042,6 +1056,7 @@ void *CPU::LD_B_A()
 
 void *CPU::LD_C_B()
 {
+    this->logger->Log("CPU", "LD_C_B");
     this->registers->c = this->registers->b;
     updateFlags();
 
@@ -1050,6 +1065,7 @@ void *CPU::LD_C_B()
 
 void *CPU::LD_C_C()
 {
+    this->logger->Log("CPU", "LD_C_C");
     this->registers->c = this->registers->c;
     updateFlags();
 
@@ -1058,6 +1074,7 @@ void *CPU::LD_C_C()
 
 void *CPU::LD_C_D()
 {
+    this->logger->Log("CPU", "LD_C_D");
     this->registers->c = this->registers->d;
     updateFlags();
 
@@ -1066,6 +1083,7 @@ void *CPU::LD_C_D()
 
 void *CPU::LD_C_E()
 {
+    this->logger->Log("CPU", "LD_C_D");
     this->registers->c = this->registers->e;
     updateFlags();
 
@@ -1074,6 +1092,7 @@ void *CPU::LD_C_E()
 
 void *CPU::LD_C_H()
 {
+    this->logger->Log("CPU", "LD_C_H");
     this->registers->c = this->registers->h;
     updateFlags();
 
@@ -1082,6 +1101,7 @@ void *CPU::LD_C_H()
 
 void *CPU::LD_C_L()
 {
+    this->logger->Log("CPU", "LD_C_L");
     this->registers->c = this->registers->l;
     updateFlags();
 
@@ -1090,7 +1110,13 @@ void *CPU::LD_C_L()
 
 void *CPU::LD_C_HL()
 {
-    this->registers->c = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
+    this->logger->Log("CPU", "LD_C_HL");
+    this->registers->c = readByte(
+        this->registers->GetRegister16(
+            this->registers->h,
+            this->registers->l
+        )
+    );
     updateFlags();
 
     return (nullptr);
@@ -1098,8 +1124,121 @@ void *CPU::LD_C_HL()
 
 void *CPU::LD_C_A()
 {
+    this->logger->Log("CPU", "LD_C_A");
     this->registers->c = this->registers->a;
     updateFlags();
 
     return (nullptr);
+}
+
+void *CPU::LD_D_B()
+{
+    this->logger->Log("CPU", "LD_D_B");
+    this->registers->d = this->registers->b;
+    updateFlags();
+}
+
+void *CPU::LD_D_C()
+{
+    this->logger->Log("CPU", "LD_D_C");
+    this->registers->d = this->registers->c;
+    updateFlags();
+}
+
+void *CPU::LD_D_D()
+{
+    this->logger->Log("CPU", "LD_D_D");
+    this->registers->d = this->registers->d;
+    updateFlags();
+}
+
+void *CPU::LD_D_E()
+{
+    this->logger->Log("CPU", "LD_D_E");
+    this->registers->d = this->registers->e;
+    updateFlags();
+}
+
+void *CPU::LD_D_H()
+{
+    this->logger->Log("CPU", "LD_D_H");
+    this->registers->d = this->registers->h;
+    updateFlags();
+}
+
+void *CPU::LD_D_L()
+{
+    this->logger->Log("CPU", "LD_D_L");
+    this->registers->d = this->registers->l;
+    updateFlags();
+}
+
+void *CPU::LD_D_HL()
+{
+    this->logger->Log("CPU", "LD_D_HL");
+    this->registers->d = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
+    updateFlags();
+}
+
+void *CPU::LD_D_A()
+{
+    this->logger->Log("CPU", "LD_D_A");
+    this->registers->d = this->registers->a;
+    updateFlags();
+}
+
+void *CPU::LD_E_B()
+{
+    this->logger->Log("CPU", "LD_E_B");
+    this->registers->e = this->registers->b;
+    updateFlags();
+}
+
+void *CPU::LD_E_C()
+{
+    this->logger->Log("CPU", "LD_E_C");
+    this->registers->e = this->registers->c;
+    updateFlags();
+}
+
+void *CPU::LD_E_D()
+{
+    this->logger->Log("CPU", "LD_E_D");
+    this->registers->e = this->registers->d;
+    updateFlags();
+}
+
+void *CPU::LD_E_E()
+{
+    this->logger->Log("CPU", "LD_E_E");
+    this->registers->e = this->registers->e;
+    updateFlags();
+}
+
+void *CPU::LD_E_H()
+{
+    this->logger->Log("CPU", "LD_E_H");
+    this->registers->e = this->registers->h;
+    updateFlags();
+}
+
+void *CPU::LD_E_L()
+{
+    this->logger->Log("CPU", "LD_E_L");
+    this->registers->e = this->registers->l;
+    updateFlags();
+}
+
+void *CPU::LD_E_HL()
+{
+    this->logger->Log("CPU", "LD_E_HL");
+    this->registers->e = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
+    updateFlags();
+}
+
+void *CPU::LD_E_A()
+{
+    this->logger->Log("CPU", "LD_E_A");
+    this->registers->e = this->registers->a;
+    updateFlags();
 }
