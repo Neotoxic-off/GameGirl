@@ -975,3 +975,131 @@ void CPU::updateFlags()
     // Carry Flag is always reset
     this->flags->c = false;
 }
+
+void *CPU::LD_B_B()
+{
+    this->registers->b = this->registers->b;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_B_C()
+{
+    this->registers->b = this->registers->c;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_B_D()
+{
+    this->registers->b = this->registers->d;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_B_E()
+{
+    this->registers->b = this->registers->e;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_B_H()
+{
+    this->registers->b = this->registers->h;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_B_L()
+{
+    this->registers->b = this->registers->l;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_B_HL()
+{
+    this->registers->b = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_B_A()
+{
+    this->registers->b = this->registers->a;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_C_B()
+{
+    this->registers->c = this->registers->b;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_C_C()
+{
+    this->registers->c = this->registers->c;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_C_D()
+{
+    this->registers->c = this->registers->d;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_C_E()
+{
+    this->registers->c = this->registers->e;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_C_H()
+{
+    this->registers->c = this->registers->h;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_C_L()
+{
+    this->registers->c = this->registers->l;
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_C_HL()
+{
+    this->registers->c = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
+    updateFlags();
+
+    return (nullptr);
+}
+
+void *CPU::LD_C_A()
+{
+    this->registers->c = this->registers->a;
+    updateFlags();
+
+    return (nullptr);
+}
