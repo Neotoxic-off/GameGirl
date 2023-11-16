@@ -813,3 +813,165 @@ void *CPU::LD_HL_A_increment()
 
     return nullptr;
 }
+
+void *CPU::LD_H_d8()
+{
+    this->logger->Log("CPU", "LD_H_d8");
+    this->registers->h = fetch8();
+    return nullptr;
+}
+
+void *CPU::JR_Z_r8()
+{
+    this->logger->Log("CPU", "JR_Z_r8");
+    int8_t r8 = fetch8();
+
+    if (this->flags->z) {
+        this->registers->pc += r8;
+    }
+
+    return nullptr;
+}
+
+void *CPU::ADD_HL_HL()
+{
+    this->logger->Log("CPU", "ADD_HL_HL");
+    add16(this->registers->GetRegister16(this->registers->h, this->registers->l),
+          this->registers->GetRegister16(this->registers->h, this->registers->l));
+    return nullptr;
+}
+
+void *CPU::LD_A_HL_increment()
+{
+    uint16_t hl = 0;
+
+    this->logger->Log("CPU", "LD_A_HL_increment");
+    this->registers->a = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
+    
+    hl = this->registers->GetRegister16(this->registers->h, this->registers->l);
+    this->registers->SetRegister16(
+        this->registers->h,
+        this->registers->l,
+        hl
+    );
+    return nullptr;
+}
+
+void *CPU::LD_L_d8()
+{
+    this->logger->Log("CPU", "LD_L_d8");
+    this->registers->l = fetch8();
+    return nullptr;
+}
+
+void *CPU::JR_NC_r8()
+{
+    int8_t r8 = fetch8();
+
+    if (!this->flags->c) {
+        this->registers->pc += r8;
+    }
+    return nullptr;
+}
+
+void *CPU::LD_SP_d16()
+{
+    this->registers->sp = fetch16();
+    return nullptr;
+}
+
+void *CPU::LD_HL_decrement_A()
+{
+    uint16_t hl = 0;
+
+    writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), this->registers->a);
+
+    hl = this->registers->GetRegister16(this->registers->h, this->registers->l);
+    this->registers->SetRegister16(this->registers->h, this->registers->l, hl--);
+    return nullptr;
+}
+
+void *CPU::LD_HL_d8()
+{
+    writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), fetch8());
+    return nullptr;
+}
+
+void *CPU::SCF()
+{
+    this->flags->c = true;
+    this->flags->n = false;
+    this->flags->h = false;
+    return nullptr;
+}
+
+void *CPU::JR_C_r8()
+{
+    int8_t r8 = fetch8();
+    if (this->flags->c) {
+        this->registers->pc += r8;
+    }
+    return nullptr;
+}
+
+void *CPU::ADD_HL_SP()
+{
+    add16(this->registers->GetRegister16(this->registers->h, this->registers->l),
+          this->registers->sp);
+    return nullptr;
+}
+
+void *CPU::LD_A_decrement_HL()
+{
+    uint16_t hl = 0;
+
+    this->registers->a = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
+    hl = this->registers->GetRegister16(this->registers->h, this->registers->l);
+    this->registers->SetRegister16(this->registers->h, this->registers->l, hl--);
+    return nullptr;
+}
+
+void *CPU::INC_A()
+{
+    this->registers->a++;
+    updateFlags();
+    return nullptr;
+}
+
+void *CPU::DEC_A()
+{
+    this->registers->a--;
+    updateFlags();
+    return nullptr;
+}
+
+void *CPU::LD_A_d8()
+{
+    this->registers->a = fetch8();
+    return nullptr;
+}
+
+void *CPU::CCF()
+{
+    this->flags->c = !this->flags->c;
+    this->flags->n = false;
+    this->flags->h = false;
+
+    return nullptr;
+}
+
+void CPU::updateFlags()
+{
+    // Zero Flag
+    this->flags->z = (this->registers->a == 0);
+
+    // Subtraction Flag is always reset
+    this->flags->n = false;
+
+    // Half Carry Flag
+    // Set if there is a carry from the low nibble (4th bit) in the result
+    this->flags->h = ((this->registers->a & 0x0F) == 0x0F);
+
+    // Carry Flag is always reset
+    this->flags->c = false;
+}

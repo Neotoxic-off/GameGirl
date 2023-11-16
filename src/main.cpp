@@ -17,10 +17,11 @@ void information(GameGirl *gamegirl)
 void disassembler(GameGirl *gamegirl)
 {
     bool bypass = true;
+    size_t limit = 50;
     uint8_t padding = 0;
 
     for (size_t i = 0; i < gamegirl->rom->size; i++) {
-        if (bypass == true && i >= 50)
+        if (bypass == true && i >= limit)
             break;
         padding = gamegirl->cpu->Execute((uint8_t)gamegirl->rom->data[i]);
         i += padding;
