@@ -22,12 +22,8 @@ void disassembler(GameGirl *gamegirl)
     for (size_t i = 0; i < gamegirl->rom->size; i++) {
         if (bypass == true && i >= 50)
             break;
-        if (gamegirl->rom->data[i] < 256) {
-            padding = gamegirl->cpu->Execute((uint8_t)gamegirl->rom->data[i]);
-            i += padding;
-        } else {
-            std::cout << "SKIP: 0x" << std::hex << (uint8_t)gamegirl->rom->data[i] << std::endl;
-        }
+        padding = gamegirl->cpu->Execute((uint8_t)gamegirl->rom->data[i]);
+        i += padding;
     }
 }
 
