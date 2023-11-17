@@ -1555,3 +1555,116 @@ void *CPU::LD_A_HL()
     
     return (nullptr);
 }
+
+void *CPU::ADD_A_B()
+{
+    this->logger->Log("CPU", "ADD_A_B");
+    add(this->registers->b);
+    
+    return (nullptr);
+}
+
+void *CPU::ADD_A_C()
+{
+    this->logger->Log("CPU", "ADD_A_C");
+    add(this->registers->c);
+    
+    return (nullptr);
+}
+
+void *CPU::ADD_A_D()
+{
+    this->logger->Log("CPU", "ADD_A_D");
+    add(this->registers->d);
+    
+    return (nullptr);
+}
+
+void *CPU::ADD_A_E()
+{
+    this->logger->Log("CPU", "ADD_A_E");
+    add(this->registers->e);
+    
+    return (nullptr);
+}
+
+void *CPU::ADD_A_H()
+{
+    this->logger->Log("CPU", "ADD_A_H");
+    add(this->registers->h);
+    
+    return (nullptr);
+}
+
+void *CPU::ADD_A_L()
+{
+    this->logger->Log("CPU", "ADD_A_L");
+    add(this->registers->l);
+    
+    return (nullptr);
+}
+
+void *CPU::ADD_A_HL()
+{
+    this->logger->Log("CPU", "ADD_A_HL");
+    add(readByte(this->registers->GetRegister16(this->registers->h, this->registers->l)));
+    
+    return (nullptr);
+}
+
+void *CPU::ADD_A_A()
+{
+    this->logger->Log("CPU", "ADD_A_A");
+    add(this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::ADC_A_B()
+{
+    this->logger->Log("CPU", "ADC_A_B");
+    // Implement ADC A,B instruction logic
+    // Add with carry
+}
+
+void *CPU::ADC_A_C()
+{
+    this->logger->Log("CPU", "ADC_A_C");
+    // Implement ADC A,C instruction logic
+}
+
+void *CPU::ADC_A_D()
+{
+    this->logger->Log("CPU", "ADC_A_D");
+    // Implement ADC A,D instruction logic
+}
+
+void *CPU::ADC_A_E()
+{
+    this->logger->Log("CPU", "ADC_A_E");
+    // Implement ADC A,E instruction logic
+}
+
+void *CPU::ADC_A_H()
+{
+    this->logger->Log("CPU", "ADC_A_H");
+    // Implement ADC A,H instruction logic
+}
+
+void *CPU::ADC_A_L()
+{
+    this->logger->Log("CPU", "ADC_A_L");
+    // Implement ADC A,L instruction logic
+}
+
+void *CPU::ADC_A_HL()
+{
+    this->logger->Log("CPU", "ADC_A_HL");
+    // Implement ADC A,(HL) instruction logic
+}
+
+void *CPU::ADC_A_A()
+{
+    this->logger->Log("CPU", "ADC_A_A");
+    // Implement ADC A,A instruction logic
+}
