@@ -160,6 +160,39 @@
             void *LD_E_HL();
             void *LD_E_A();
 
+            void *LD_H_B();
+            void *LD_H_C();
+            void *LD_H_D();
+            void *LD_H_E();
+            void *LD_H_H();
+            void *LD_H_L();
+            void *LD_H_HL();
+            void *LD_H_A();
+            void *LD_L_B();
+            void *LD_L_C();
+            void *LD_L_D();
+            void *LD_L_E();
+            void *LD_L_H();
+            void *LD_L_L();
+            void *LD_L_HL();
+            void *LD_L_A();
+
+            void *LD_HL_B();
+            void *LD_HL_C();
+            void *LD_HL_D();
+            void *LD_HL_E();
+            void *LD_HL_H();
+            void *LD_HL_L();
+            void *HALT();
+            void *LD_HL_A();
+            void *LD_A_B();
+            void *LD_A_C();
+            void *LD_A_D();
+            void *LD_A_E();
+            void *LD_A_H();
+            void *LD_A_L();
+            void *LD_A_HL();
+
             void updateFlags();
 
         private:
@@ -266,38 +299,38 @@
                 Instruction("LD E,(HL)",   std::bind(&CPU::LD_E_HL, this), 1),
                 Instruction("LD E,A",      std::bind(&CPU::LD_E_A, this), 1),
 
-                Instruction("LD H,B",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD H,C",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD H,D",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD H,E",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD H,H",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD H,L",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD H,(HL)",   std::bind(&CPU::NIY, this), 1),
-                Instruction("LD H,A",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD L,B",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD L,C",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD L,D",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD L,E",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD L,H",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD L,L",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD L,(HL)",   std::bind(&CPU::NIY, this), 1),
-                Instruction("LD L,A",      std::bind(&CPU::NIY, this), 1),
+                Instruction("LD H,B",      std::bind(&CPU::LD_H_B, this), 1),
+                Instruction("LD H,C",      std::bind(&CPU::LD_H_C, this), 1),
+                Instruction("LD H,D",      std::bind(&CPU::LD_H_D, this), 1),
+                Instruction("LD H,E",      std::bind(&CPU::LD_H_E, this), 1),
+                Instruction("LD H,H",      std::bind(&CPU::LD_H_H, this), 1),
+                Instruction("LD H,L",      std::bind(&CPU::LD_H_L, this), 1),
+                Instruction("LD H,(HL)",   std::bind(&CPU::LD_H_HL, this), 1),
+                Instruction("LD H,A",      std::bind(&CPU::LD_H_A, this), 1),
+                Instruction("LD L,B",      std::bind(&CPU::LD_L_B, this), 1),
+                Instruction("LD L,C",      std::bind(&CPU::LD_L_C, this), 1),
+                Instruction("LD L,D",      std::bind(&CPU::LD_L_D, this), 1),
+                Instruction("LD L,E",      std::bind(&CPU::LD_L_E, this), 1),
+                Instruction("LD L,H",      std::bind(&CPU::LD_L_H, this), 1),
+                Instruction("LD L,L",      std::bind(&CPU::LD_L_L, this), 1),
+                Instruction("LD L,(HL)",   std::bind(&CPU::LD_L_HL, this), 1),
+                Instruction("LD L,A",      std::bind(&CPU::LD_L_A, this), 1),
 
-                Instruction("LD (HL),B",   std::bind(&CPU::NIY, this), 1),
-                Instruction("LD (HL),C",   std::bind(&CPU::NIY, this), 1),
-                Instruction("LD (HL),D",   std::bind(&CPU::NIY, this), 1),
-                Instruction("LD (HL),E",   std::bind(&CPU::NIY, this), 1),
-                Instruction("LD (HL),H",   std::bind(&CPU::NIY, this), 1),
-                Instruction("LD (HL),L",   std::bind(&CPU::NIY, this), 1),
-                Instruction("HALT",        std::bind(&CPU::NIY, this), 1),
-                Instruction("LD (HL),A",   std::bind(&CPU::NIY, this), 1),
-                Instruction("LD A,B",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD A,C",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD A,D",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD A,E",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD A,H",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD A,L",      std::bind(&CPU::NIY, this), 1),
-                Instruction("LD A,(HL)",   std::bind(&CPU::NIY, this), 1),
+                Instruction("LD (HL),B",   std::bind(&CPU::LD_HL_B, this), 1),
+                Instruction("LD (HL),C",   std::bind(&CPU::LD_HL_C, this), 1),
+                Instruction("LD (HL),D",   std::bind(&CPU::LD_HL_D, this), 1),
+                Instruction("LD (HL),E",   std::bind(&CPU::LD_HL_E, this), 1),
+                Instruction("LD (HL),H",   std::bind(&CPU::LD_HL_H, this), 1),
+                Instruction("LD (HL),L",   std::bind(&CPU::LD_HL_L, this), 1),
+                Instruction("HALT",        std::bind(&CPU::HALT, this), 1),
+                Instruction("LD (HL),A",   std::bind(&CPU::LD_HL_A, this), 1),
+                Instruction("LD A,B",      std::bind(&CPU::LD_A_B, this), 1),
+                Instruction("LD A,C",      std::bind(&CPU::LD_A_C, this), 1),
+                Instruction("LD A,D",      std::bind(&CPU::LD_A_D, this), 1),
+                Instruction("LD A,E",      std::bind(&CPU::LD_A_E, this), 1),
+                Instruction("LD A,H",      std::bind(&CPU::LD_A_H, this), 1),
+                Instruction("LD A,L",      std::bind(&CPU::LD_A_L, this), 1),
+                Instruction("LD A,(HL)",   std::bind(&CPU::LD_A_HL, this), 1),
                 Instruction("LD A,A",      std::bind(&CPU::LD_A_A, this), 1),
                 
                 Instruction("ADD A,B",     std::bind(&CPU::NIY, this), 1),

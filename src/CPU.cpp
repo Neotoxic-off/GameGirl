@@ -1136,6 +1136,8 @@ void *CPU::LD_D_B()
     this->logger->Log("CPU", "LD_D_B");
     this->registers->d = this->registers->b;
     updateFlags();
+
+    return (nullptr);
 }
 
 void *CPU::LD_D_C()
@@ -1143,6 +1145,8 @@ void *CPU::LD_D_C()
     this->logger->Log("CPU", "LD_D_C");
     this->registers->d = this->registers->c;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_D_D()
@@ -1150,6 +1154,8 @@ void *CPU::LD_D_D()
     this->logger->Log("CPU", "LD_D_D");
     this->registers->d = this->registers->d;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_D_E()
@@ -1157,6 +1163,8 @@ void *CPU::LD_D_E()
     this->logger->Log("CPU", "LD_D_E");
     this->registers->d = this->registers->e;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_D_H()
@@ -1164,6 +1172,8 @@ void *CPU::LD_D_H()
     this->logger->Log("CPU", "LD_D_H");
     this->registers->d = this->registers->h;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_D_L()
@@ -1171,6 +1181,8 @@ void *CPU::LD_D_L()
     this->logger->Log("CPU", "LD_D_L");
     this->registers->d = this->registers->l;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_D_HL()
@@ -1178,6 +1190,8 @@ void *CPU::LD_D_HL()
     this->logger->Log("CPU", "LD_D_HL");
     this->registers->d = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_D_A()
@@ -1185,6 +1199,8 @@ void *CPU::LD_D_A()
     this->logger->Log("CPU", "LD_D_A");
     this->registers->d = this->registers->a;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_E_B()
@@ -1192,6 +1208,8 @@ void *CPU::LD_E_B()
     this->logger->Log("CPU", "LD_E_B");
     this->registers->e = this->registers->b;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_E_C()
@@ -1199,6 +1217,8 @@ void *CPU::LD_E_C()
     this->logger->Log("CPU", "LD_E_C");
     this->registers->e = this->registers->c;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_E_D()
@@ -1206,6 +1226,8 @@ void *CPU::LD_E_D()
     this->logger->Log("CPU", "LD_E_D");
     this->registers->e = this->registers->d;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_E_E()
@@ -1213,6 +1235,8 @@ void *CPU::LD_E_E()
     this->logger->Log("CPU", "LD_E_E");
     this->registers->e = this->registers->e;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_E_H()
@@ -1220,6 +1244,8 @@ void *CPU::LD_E_H()
     this->logger->Log("CPU", "LD_E_H");
     this->registers->e = this->registers->h;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_E_L()
@@ -1227,6 +1253,8 @@ void *CPU::LD_E_L()
     this->logger->Log("CPU", "LD_E_L");
     this->registers->e = this->registers->l;
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_E_HL()
@@ -1234,6 +1262,8 @@ void *CPU::LD_E_HL()
     this->logger->Log("CPU", "LD_E_HL");
     this->registers->e = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
     updateFlags();
+    
+    return (nullptr);
 }
 
 void *CPU::LD_E_A()
@@ -1241,4 +1271,287 @@ void *CPU::LD_E_A()
     this->logger->Log("CPU", "LD_E_A");
     this->registers->e = this->registers->a;
     updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_H_B()
+{
+    this->logger->Log("CPU", "LD_H_B");
+    this->registers->h = this->registers->b;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_H_C()
+{
+    this->logger->Log("CPU", "LD_H_C");
+    this->registers->h = this->registers->c;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_H_D()
+{
+    this->logger->Log("CPU", "LD_H_D");
+    this->registers->h = this->registers->d;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_H_E()
+{
+    this->logger->Log("CPU", "LD_H_E");
+    this->registers->h = this->registers->e;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_H_H()
+{
+    this->logger->Log("CPU", "LD_H_H");
+    this->registers->h = this->registers->h;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_H_L()
+{
+    this->logger->Log("CPU", "LD_H_L");
+    this->registers->h = this->registers->l;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_H_HL()
+{
+    this->logger->Log("CPU", "LD_H_HL");
+    this->registers->h = readByte(
+        this->registers->GetRegister16(
+            this->registers->h,
+            this->registers->l
+        )
+    );
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_H_A()
+{
+    this->logger->Log("CPU", "LD_H_A");
+    this->registers->h = this->registers->a;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_L_B()
+{
+    this->logger->Log("CPU", "LD_L_B");
+    this->registers->l = this->registers->b;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_L_C()
+{
+    this->logger->Log("CPU", "LD_L_C");
+    this->registers->l = this->registers->c;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_L_D()
+{
+    this->logger->Log("CPU", "LD_L_D");
+    this->registers->l = this->registers->d;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_L_E()
+{
+    this->logger->Log("CPU", "LD_L_E");
+    this->registers->l = this->registers->e;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_L_H()
+{
+    this->logger->Log("CPU", "LD_L_H");
+    this->registers->l = this->registers->h;
+    updateFlags();
+}
+
+void *CPU::LD_L_L()
+{
+    this->logger->Log("CPU", "LD_L_L");
+    this->registers->l = this->registers->l;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_L_HL()
+{
+    this->logger->Log("CPU", "LD_L_HL");
+    this->registers->l = readByte(
+        this->registers->GetRegister16(
+            this->registers->h,
+            this->registers->l
+        )
+    );
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_L_A()
+{
+    this->logger->Log("CPU", "LD_L_A");
+    this->registers->l = this->registers->a;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+// 
+
+void *CPU::LD_HL_B()
+{
+    this->logger->Log("CPU", "LD_HL_B");
+    writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), this->registers->b);
+    
+    return (nullptr);
+}
+
+void *CPU::LD_HL_C()
+{
+    this->logger->Log("CPU", "LD_HL_C");
+    writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), this->registers->c);
+    
+    return (nullptr);
+}
+
+void *CPU::LD_HL_D()
+{
+    this->logger->Log("CPU", "LD_HL_D");
+    writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), this->registers->d);
+    
+    return (nullptr);
+}
+
+void *CPU::LD_HL_E()
+{
+    this->logger->Log("CPU", "LD_HL_E");
+    writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), this->registers->e);
+    
+    return (nullptr);
+}
+
+void *CPU::LD_HL_H()
+{
+    this->logger->Log("CPU", "LD_HL_H");
+    writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), this->registers->h);
+    
+    return (nullptr);
+}
+
+void *CPU::LD_HL_L()
+{
+    this->logger->Log("CPU", "LD_HL_L");
+    writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), this->registers->l);
+    
+    return (nullptr);
+}
+
+void *CPU::HALT()
+{
+    this->logger->Log("CPU", "HALT");
+    // Implement HALT instruction logic
+    
+    return (nullptr);
+}
+
+void *CPU::LD_HL_A()
+{
+    this->logger->Log("CPU", "LD_HL_A");
+    writeByte(this->registers->GetRegister16(this->registers->h, this->registers->l), this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::LD_A_B()
+{
+    this->logger->Log("CPU", "LD_A_B");
+    this->registers->a = this->registers->b;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_A_C()
+{
+    this->logger->Log("CPU", "LD_A_C");
+    this->registers->a = this->registers->c;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_A_D()
+{
+    this->logger->Log("CPU", "LD_A_D");
+    this->registers->a = this->registers->d;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_A_E()
+{
+    this->logger->Log("CPU", "LD_A_E");
+    this->registers->a = this->registers->e;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_A_H()
+{
+    this->logger->Log("CPU", "LD_A_H");
+    this->registers->a = this->registers->h;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_A_L()
+{
+    this->logger->Log("CPU", "LD_A_L");
+    this->registers->a = this->registers->l;
+    updateFlags();
+    
+    return (nullptr);
+}
+
+void *CPU::LD_A_HL()
+{
+    this->logger->Log("CPU", "LD_A_HL");
+    this->registers->a = readByte(this->registers->GetRegister16(this->registers->h, this->registers->l));
+    updateFlags();
+    
+    return (nullptr);
 }
