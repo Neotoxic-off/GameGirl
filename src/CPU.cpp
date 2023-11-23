@@ -1618,46 +1618,145 @@ void *CPU::ADC_A_B()
     this->logger->Log("CPU", "ADC_A_B");
     // Implement ADC A,B instruction logic
     // Add with carry
+
+    return (nullptr);
 }
 
 void *CPU::ADC_A_C()
 {
     this->logger->Log("CPU", "ADC_A_C");
     // Implement ADC A,C instruction logic
+
+    return (nullptr);
 }
 
 void *CPU::ADC_A_D()
 {
     this->logger->Log("CPU", "ADC_A_D");
     // Implement ADC A,D instruction logic
+
+    return (nullptr);
 }
 
 void *CPU::ADC_A_E()
 {
     this->logger->Log("CPU", "ADC_A_E");
     // Implement ADC A,E instruction logic
+
+    return (nullptr);
 }
 
 void *CPU::ADC_A_H()
 {
     this->logger->Log("CPU", "ADC_A_H");
     // Implement ADC A,H instruction logic
+
+    return (nullptr);
 }
 
 void *CPU::ADC_A_L()
 {
     this->logger->Log("CPU", "ADC_A_L");
     // Implement ADC A,L instruction logic
+
+    return (nullptr);
 }
 
 void *CPU::ADC_A_HL()
 {
     this->logger->Log("CPU", "ADC_A_HL");
     // Implement ADC A,(HL) instruction logic
+
+    return (nullptr);
 }
 
 void *CPU::ADC_A_A()
 {
     this->logger->Log("CPU", "ADC_A_A");
     // Implement ADC A,A instruction logic
+
+    return (nullptr);
+}
+
+void *CPU::SUB_B()
+{
+    this->logger->Log("CPU", "SUB_B");
+
+    this->registers->a -= this->registers->b;
+    this->updateFlags(this->registers->a);
+
+    return (nullptr);
+}
+
+void *CPU::SUB_C()
+{
+    this->logger->Log("CPU", "SUB_C");
+
+    this->registers->a -= this->registers->c;
+    this->updateFlags(this->registers->a);
+
+    return (nullptr);
+}
+
+void *CPU::SUB_D()
+{
+    this->logger->Log("CPU", "SUB_D");
+
+    this->registers->a -= this->registers->d;
+    this->updateFlags(this->registers->a);
+
+    return (nullptr);
+}
+
+void *CPU::SUB_E()
+{
+    this->logger->Log("CPU", "SUB_E");
+
+    this->registers->a -= this->registers->e;
+    this->updateFlags(this->registers->a);
+
+    return (nullptr);
+}
+
+void *CPU::SUB_H()
+{
+    this->logger->Log("CPU", "SUB_H");
+
+    this->registers->a -= this->registers->h;
+    this->updateFlags(this->registers->a);
+
+    return (nullptr);
+}
+
+void *CPU::SUB_L()
+{
+    this->logger->Log("CPU", "SUB_L");
+
+    this->registers->a -= this->registers->l;
+    this->updateFlags(this->registers->a);
+
+    return (nullptr);
+}
+
+void *CPU::SUB_HL()
+{
+    this->logger->Log("CPU", "SUB_HL");
+
+    this->registers->a -= this->registers->GetRegister16(
+        this->registers->h,
+        this->registers->l
+    );
+    this->updateFlags(this->registers->a);
+
+    return (nullptr);
+}
+
+void *CPU::SUB_A()
+{
+    this->logger->Log("CPU", "SUB_A");
+
+    this->registers->a -= this->registers->a;
+    this->updateFlags(this->registers->a);
+
+    return (nullptr);
 }

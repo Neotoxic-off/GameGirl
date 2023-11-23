@@ -210,6 +210,15 @@
             void *ADC_A_HL();
             void *ADC_A_A();
 
+            void *SUB_B();
+            void *SUB_C();
+            void *SUB_D();
+            void *SUB_E();
+            void *SUB_H();
+            void *SUB_L();
+            void *SUB_HL();
+            void *SUB_A();
+
             void updateFlags();
 
         private:
@@ -367,13 +376,13 @@
                 Instruction("ADC A,(HL)",  std::bind(&CPU::ADD_A_HL, this), 1),
                 Instruction("ADC A,A",     std::bind(&CPU::ADD_A_A, this), 1),
 
-                Instruction("SUB B",       std::bind(&CPU::NIY, this), 1),
-                Instruction("SUB C",       std::bind(&CPU::NIY, this), 1),
-                Instruction("SUB D",       std::bind(&CPU::NIY, this), 1),
-                Instruction("SUB E",       std::bind(&CPU::NIY, this), 1),
-                Instruction("SUB H",       std::bind(&CPU::NIY, this), 1),
-                Instruction("SUB L",       std::bind(&CPU::NIY, this), 1),
-                Instruction("SUB (HL)",    std::bind(&CPU::NIY, this), 1),
+                Instruction("SUB B",       std::bind(&CPU::SUB_B, this), 1),
+                Instruction("SUB C",       std::bind(&CPU::SUB_C, this), 1),
+                Instruction("SUB D",       std::bind(&CPU::SUB_D, this), 1),
+                Instruction("SUB E",       std::bind(&CPU::SUB_E, this), 1),
+                Instruction("SUB H",       std::bind(&CPU::SUB_H, this), 1),
+                Instruction("SUB L",       std::bind(&CPU::SUB_L, this), 1),
+                Instruction("SUB (HL)",    std::bind(&CPU::SUB_HL, this), 1),
                 Instruction("SUB A",       std::bind(&CPU::NIY, this), 1),
                 Instruction("SBC A,B",     std::bind(&CPU::NIY, this), 1),
                 Instruction("SBC A,C",     std::bind(&CPU::NIY, this), 1),
