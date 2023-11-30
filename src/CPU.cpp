@@ -556,6 +556,8 @@ void *CPU::writeByte(uint16_t addr, uint8_t value)
 {
     this->logger->Log("CPU", "writeByte");
     // Implement memory write operation
+
+    return (nullptr);
 }
 
 void *CPU::push16(uint16_t value)
@@ -1759,4 +1761,258 @@ void *CPU::SUB_A()
     this->updateFlags(this->registers->a);
 
     return (nullptr);
+}
+
+void *CPU::XOR_A()
+{
+    this->logger->Log("CPU", "XOR_A");
+    this->registers->a ^= this->registers->a;
+    updateFlags(this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::XOR_B()
+{
+    this->logger->Log("CPU", "XOR_B");
+    this->registers->a ^= this->registers->b;
+    updateFlags(this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::XOR_C()
+{
+    this->logger->Log("CPU", "XOR_C");
+    this->registers->a ^= this->registers->c;
+    updateFlags(this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::XOR_D()
+{
+    this->logger->Log("CPU", "XOR_D");
+    this->registers->a ^= this->registers->d;
+    updateFlags(this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::XOR_E()
+{
+    this->logger->Log("CPU", "XOR_E");
+    this->registers->a ^= this->registers->e;
+    updateFlags(this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::XOR_H()
+{
+    this->logger->Log("CPU", "XOR_H");
+    this->registers->a ^= this->registers->h;
+    updateFlags(this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::XOR_L()
+{
+    this->logger->Log("CPU", "XOR_L");
+    this->registers->a ^= this->registers->l;
+    updateFlags(this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::XOR_HL()
+{
+    this->logger->Log("CPU", "XOR_HL");
+    this->registers->a ^= this->registers->GetRegister16(this->registers->h, this->registers->l);
+    updateFlags(this->registers->a);
+    
+    return (nullptr);
+}
+
+void *CPU::RET_NZ()
+{
+    this->logger->Log("CPU", "RET_NZ");
+    if (this->flags->z == false) {
+        this->registers->pc = this->pop16();
+    }
+}
+
+void *CPU::POP_BC()
+{
+    this->logger->Log("CPU", "POP_BC");
+    this->registers->SetRegister16(
+        this->registers->b,
+        this->registers->c,
+        this->pop16()
+    );
+
+    return (nullptr);
+}
+
+void *CPU::JP_NZ_a16()
+{
+    this->logger->Log("CPU", "JP_NZ_a16");
+    if (this->flags->z == false) {
+        this->registers->pc = this->fetch16();
+    } else {
+        this->fetch16(); // Consume the immediate value
+    }
+}
+
+void *CPU::JP_a16()
+{
+    this->logger->Log("CPU", "JP_a16");
+    this->registers->pc = this->fetch16();
+}
+
+void *CPU::CALL_NZ_a16()
+{
+    this->logger->Log("CPU", "CALL_NZ_a16");
+    if (this->flags->z == false) {
+        this->CALL();
+    } else {
+        this->fetch16(); // Consume the immediate value
+    }
+}
+
+void *CPU::PUSH_BC()
+{
+    this->logger->Log("CPU", "PUSH_BC");
+    this->push16(
+        this->registers->GetRegister16(
+            this->registers->b,
+            this->registers->c
+        )
+    );
+
+    return (nullptr);
+}
+
+void *CPU::CALL()
+{
+    this->logger->Log("CPU", "CALL");
+    uint16_t address = this->fetch16();
+
+    this->push16(this->registers->pc);
+    this->registers->pc = address;
+
+    return (nullptr);
+}
+
+void CPU::updateFlagsAddition(uint16_t result, uint8_t reg)
+{
+    this->logger->Log("CPU", "updateFlagsAddition");
+    this->flags->z = ((result & 0xFF) == 0);
+    this->flags->c = (result > 0xFF);
+    this->flags->h = (((reg & 0x0F) + (result & 0x0F)) > 0x0F);
+    this->flags->n = (false);
+}
+
+void *CPU::ADD_A(uint8_t value)
+{
+    this->logger->Log("CPU", "ADD_A");
+    uint16_t result = static_cast<uint16_t>(this->registers->a) + static_cast<uint16_t>(value);
+    
+    this->registers->a = static_cast<uint8_t>(result);
+
+    this->updateFlagsAddition(result, this->registers->a);
+
+    return (nullptr);
+}
+
+void *CPU::ADD_A_d8()
+{
+    this->logger->Log("CPU", "ADD_A_d8");
+    uint8_t value = this->fetch8();
+    this->ADD_A(value);
+}
+
+void *CPU::RST_00H()
+{
+    this->logger->Log("CPU", "RST_00H");
+    this->CALLRST(0x00);
+}
+
+void *CPU::RET_Z()
+{
+    this->logger->Log("CPU", "RET_Z");
+    if (this->flags->z == true) {
+        this->registers->pc = this->pop16();
+    }
+}
+
+void *CPU::RET()
+{
+    this->logger->Log("CPU", "RET");
+    this->registers->pc = this->pop16();
+}
+
+void *CPU::JP_Z_a16()
+{
+    this->logger->Log("CPU", "JP_Z_a16");
+    if (this->flags->z == true) {
+        this->registers->pc = this->fetch16();
+    } else {
+        this->fetch16();
+    }
+}
+
+void *CPU::PREFIX_CB()
+{
+    this->logger->Log("CPU", "PREFIX_CB");
+    // Implement the logic for CB prefix
+    // This is a placeholder, you need to implement the actual logic
+}
+
+void *CPU::CALL_Z_a16()
+{
+    this->logger->Log("CPU", "CALL_Z_a16");
+    if (this->flags->z == true) {
+        this->CALL();
+    } else {
+        this->fetch16();
+    }
+}
+
+void *CPU::CALL_a16()
+{
+    this->logger->Log("CPU", "CALL_a16");
+    this->CALL();
+}
+
+void *CPU::ADC_A(uint8_t value)
+{
+    this->logger->Log("CPU", "ADC_A");
+    uint8_t carry = this->flags->c ? 1 : 0;
+    uint16_t result = this->registers->a + value + carry;
+
+    this->updateFlagsAddition(result, this->registers->a);
+    this->registers->a = static_cast<uint8_t>(result);
+}
+
+void *CPU::ADC_A_d8()
+{
+    this->logger->Log("CPU", "ADC_A_d8");
+    uint8_t value = this->fetch8();
+    this->ADC_A(value);
+}
+
+void *CPU::CALLRST(uint16_t address)
+{
+    this->logger->Log("CPU", "CALLRST");
+    this->registers->sp -= 2;
+    this->write16(this->registers->sp, this->registers->pc);
+    this->registers->pc = address;
+}
+
+void *CPU::RST_08H()
+{
+    this->logger->Log("CPU", "RST_08H");
+    this->CALLRST(0x08);
 }

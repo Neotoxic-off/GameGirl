@@ -219,6 +219,42 @@
             void *SUB_HL();
             void *SUB_A();
 
+            void *AND(uint8_t);
+            void *XOR(uint8_t);
+            void *OR(uint8_t);
+
+            void *XOR_A();
+            void *XOR_B();
+            void *XOR_C();
+            void *XOR_D();
+            void *XOR_E();
+            void *XOR_H();
+            void *XOR_L();
+            void *XOR_HL();
+
+            void *RET_NZ();
+            void *POP_BC();
+            void *JP_NZ_a16();
+            void *JP_a16();
+            void *CALL_NZ_a16();
+            void *PUSH_BC();
+            void *ADD_A_d8();
+            void *RST_00H();
+            void *RET_Z();
+            void *RET();
+            void *JP_Z_a16();
+            void *PREFIX_CB();
+            void *CALL_Z_a16();
+            void *CALL_a16();
+            void *ADC_A_d8();
+            void *RST_08H();
+
+            void *CALL();
+            void *ADD_A(uint8_t);
+            void *ADC_A(uint8_t);
+            void *CALLRST(uint16_t);
+
+            void updateFlagsAddition(uint16_t, uint8_t);
             void updateFlags();
 
         private:
@@ -393,22 +429,22 @@
                 Instruction("SBC A,(HL)",  std::bind(&CPU::NIY, this), 1),
                 Instruction("SBC A,A",     std::bind(&CPU::NIY, this), 1),
 
-                Instruction("AND B",       std::bind(&CPU::NIY, this), 1),
-                Instruction("AND C",       std::bind(&CPU::NIY, this), 1),
-                Instruction("AND D",       std::bind(&CPU::NIY, this), 1),
-                Instruction("AND E",       std::bind(&CPU::NIY, this), 1),
-                Instruction("AND H",       std::bind(&CPU::NIY, this), 1),
-                Instruction("AND L",       std::bind(&CPU::NIY, this), 1),
-                Instruction("AND (HL)",    std::bind(&CPU::NIY, this), 1),
-                Instruction("AND A",       std::bind(&CPU::NIY, this), 1),
-                Instruction("XOR B",       std::bind(&CPU::NIY, this), 1),
-                Instruction("XOR C",       std::bind(&CPU::NIY, this), 1),
-                Instruction("XOR D",       std::bind(&CPU::NIY, this), 1),
-                Instruction("XOR E",       std::bind(&CPU::NIY, this), 1),
-                Instruction("XOR H",       std::bind(&CPU::NIY, this), 1),
-                Instruction("XOR L",       std::bind(&CPU::NIY, this), 1),
-                Instruction("XOR (HL)",    std::bind(&CPU::NIY, this), 1),
-                Instruction("XOR A",       std::bind(&CPU::NIY, this), 1),
+                Instruction("AND B",       std::bind(&CPU::AND_B, this), 1),
+                Instruction("AND C",       std::bind(&CPU::AND_C, this), 1),
+                Instruction("AND D",       std::bind(&CPU::AND_D, this), 1),
+                Instruction("AND E",       std::bind(&CPU::AND_E, this), 1),
+                Instruction("AND H",       std::bind(&CPU::AND_H, this), 1),
+                Instruction("AND L",       std::bind(&CPU::AND_L, this), 1),
+                Instruction("AND (HL)",    std::bind(&CPU::AND_HL, this), 1),
+                Instruction("AND A",       std::bind(&CPU::AND_A, this), 1),
+                Instruction("XOR B",       std::bind(&CPU::XOR_B, this), 1),
+                Instruction("XOR C",       std::bind(&CPU::XOR_C, this), 1),
+                Instruction("XOR D",       std::bind(&CPU::XOR_D, this), 1),
+                Instruction("XOR E",       std::bind(&CPU::XOR_E, this), 1),
+                Instruction("XOR H",       std::bind(&CPU::XOR_H, this), 1),
+                Instruction("XOR L",       std::bind(&CPU::XOR_L, this), 1),
+                Instruction("XOR (HL)",    std::bind(&CPU::XOR_HL, this), 1),
+                Instruction("XOR A",       std::bind(&CPU::XOR_A, this), 1),
 
                 Instruction("OR B",        std::bind(&CPU::OR_B, this), 1),
                 Instruction("OR C",        std::bind(&CPU::OR_C, this), 1),
